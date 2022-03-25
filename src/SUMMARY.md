@@ -20,7 +20,7 @@
   - [Virtual Machines](development/vms.md)
 
 - [Building]()
-  - [Tauri Bundler](building/tauri-bundler.md)
+  - [Building your Application](building/building-your-application.md)
   - [Linux](building/linux.md)
   - [Windows Installer](building/windows-installer.md)
   - [macOS Bundle](building/macos-bundle.md)
