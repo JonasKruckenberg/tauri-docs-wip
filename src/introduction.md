@@ -6,6 +6,9 @@
     <img src="img/banner.png" alt="Tauri Banner">
 </picture>
 
+> This is my **work-in-progress** version of the new tauri documentation. 
+> Beware of typos, inaccuracies, mistakes and missing pages!
+
 Tauri is a toolkit that helps developers make applications for the major desktop
 platforms - using virtually any frontend framework in existence. The core is
 built with Rust, and the CLI leverages Node.js making Tauri a genuinely polyglot
