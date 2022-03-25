@@ -8,12 +8,8 @@ title = "The Tauri Documentation WIP"
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
-[preprocessor.toc]
-command = "mdbook-toc"
-renderer = ["html"]
-
 [output.html]
 additional-js = ["theme/mermaid.min.js", "theme/mermaid-init.js", "theme/ferris.js"]
 additional-css = ["theme/ferris.css"]
-
-# [output.pdf]
+git-repository-url = "https://github.com/JonasKruckenberg/tauri-docs-wip"
+edit-url-template = "https://github.com/JonasKruckenberg/tauri-docs-wip/edit/main/src/{path}"
