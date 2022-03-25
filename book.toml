@@ -3,7 +3,7 @@ authors = ["Jonas Kruckenberg"]
 language = "en"
 multilingual = false
 src = "src"
-title = "The Tauri Manual"
+title = "The Tauri Documentation WIP"
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
