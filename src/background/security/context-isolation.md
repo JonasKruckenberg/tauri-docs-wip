@@ -5,20 +5,20 @@ the Frontend before they get to Tauri Core, all with JavaScript. The secure
 JavaScript code that is injected by the Isolation pattern is referred to as the
 Isolation application.
 
-This is useful to validate, sanitize, and filter messages sent to the front end
+This is useful to validate, sanitize, and filter messages sent from the Frontend
 before they even enter the Core's secure context.
 
-## Why?​
+## Why?
 
 The Isolation pattern's purpose is to provide a mechanism for developers to help
-protect their application from unwanted or malicious frontend calls to Tauri
+protect their application from unwanted or malicious Frontend calls to Tauri
 Core. The need for the Isolation pattern rose out of threats coming from
 untrusted content running on the Frontend, a common case for applications with
 many dependencies. See [Security: Threat Models] for a list of many sources of
 threats that an application may see.
 
 The largest threat model described above that the Isolation pattern was designed
-in mind with was Development Threats. Not only do many frontend build-time tools
+in mind with was Development Threats. Not only do many Frontend build-time tools
 consist of many dozen (or hundreds) of often deeply-nested dependencies, but a
 complex application may also have a large amount of (also often deeply-nested)
 dependencies that are bundled into the final output.
@@ -31,7 +31,7 @@ it can _always_ be used.
 
 We highly suggest that you lock down your application whenever you use external
 Tauri APIs. As the developer, you can utilize the secure Isolation application
-to verify IPC inputs make sure they are within some expected parameters. For
+to verify IPC inputs to make sure they are within some expected parameters. For
 example, you may want to check that a call to read or write a file is not trying
 to get to a path outside your application's expected locations. <br> Another
 example is making sure that a Tauri API HTTP fetch call is only setting the
@@ -43,7 +43,7 @@ to perform actions, the same validation techniques can be used.
 
 ## How?
 
-An Isolation Application is essentially a just JavaScript file that Tauri will
+An Isolation Application is essentially just a JavaScript file that Tauri will
 run in a locked-down, isolated environment. You assign a callback to the
 `window.__TAURI_ISOLATION_HOOK__` global property that Tauri will invoke
 whenever an IPC message is about to be sent.
@@ -103,7 +103,7 @@ Isolation.
 
 ### Configuration
 
-Let's assume that our main frontend `distDir` is set to `../dist`. We also
+Let's assume that our main Frontend `distDir` is set to `../dist`. We also
 output the previously created Isolation application to `../dist-isolation`.
 
 Filename: tauri.conf.json
@@ -148,15 +148,15 @@ sequenceDiagram
     F-->>C: Send encrypted, sanitized Message
 ```
 
-<figcaption>Figure 1-4: Approximate Steps of an IPC Message​ being sent to Tauri Core with Context
+<figcaption>Figure 1-4: Approximate Steps of an IPC Message being sent to Tauri Core with Context
 Isolation enabled.</figcaption>
 </figure>
 
 1. When `invoke` is called, the Message gets sent to the Isolation Application.
 2. Pass the message into the Isolation Application's hook. The Message object
-   has been checked to follow the minimum correct shape.
+   has been checked to follow the minimum correct shape. <!-- TODO: something about this one is weird, idk -->
 3. The return value is used as the new Message. The Isolation Application _may_
-   have modified Message to help sanitize input.
+   have modified the Message to help sanitize input.
 4. The sanitized Message is **automatically** encrypted using AES-GCM using a
    runtime-generated key and sent to the Frontend.
 5. The encrypted, sanitized message is sent to Tauri Core; which exclusively
