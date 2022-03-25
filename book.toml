@@ -12,4 +12,4 @@ command = "mdbook-mermaid"
 additional-js = ["theme/mermaid.min.js", "theme/mermaid-init.js", "theme/ferris.js"]
 additional-css = ["theme/ferris.css"]
 git-repository-url = "https://github.com/JonasKruckenberg/tauri-docs-wip"
-edit-url-template = "https://github.com/JonasKruckenberg/tauri-docs-wip/edit/main/src/{path}"
+edit-url-template = "https://github.com/JonasKruckenberg/tauri-docs-wip/edit/main/{path}"
