@@ -1,4 +1,4 @@
-# The Tauri Manual
+# The Tauri Documentation WIP
 
 <picture>
     <source srcset="img/banner.avif" type="image/avif">
