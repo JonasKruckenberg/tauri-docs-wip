@@ -63,6 +63,10 @@ see in the style guide below:
 - **Use active voice**
 
   This makes the text more engaging and easier to comprehend.
+  
+- **Language Order**
+
+  With code examples that are written in Rust and JavaScript, always order the code blocks `Rust > JavaScript`.
 
 [reference-style links]:
   https://www.markdownguide.org/basic-syntax/#reference-style-links
