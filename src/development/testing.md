@@ -691,3 +691,4 @@ test("invoke", async () => {
 [`mockwindows()`]: ../api/js/modules/mocks.md#mockwindows
 [`clearmocks()`]: ../api/js/modules/mocks.md#clearmocks
 [vitest]: https://vitest.dev
+[chai]: https://www.chaijs.com
