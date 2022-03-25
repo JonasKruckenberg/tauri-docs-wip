@@ -10,6 +10,10 @@ function playground_text(playground) {
     if (window.ace && code_block.classList.contains("editable")) {
         let editor = window.ace.edit(code_block);
         return editor.getValue();
+    } else if (code_block.classList.contains("console")) {
+        return code_block.textContent.replace('$ ','')
+    } else if (code_block.classList.contains("powershell")) {
+        return code_block.textContent.replace("PS C:\\>", '')
     } else {
         return code_block.textContent;
     }
