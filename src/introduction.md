@@ -15,8 +15,14 @@ approach to creating and maintaining great apps.
 
 <span id="ferris"></span>
 
+
+Once in a while, we will show you code examples that do not work or do not
+compile. In most situations, we lead you to correct solution and the Rust mascot
+Ferris will always draw your attention to code that isn't meant to work:
+
 | Ferris                                                                                                           | Meaning                                          |
-|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| <img src="img/ferris/compile_fail.svg" class="ferris-explain" alt="Ferris with a question mark"/>            | This code does not compile!                      |
-| <img src="img/ferris/should_panic.svg" class="ferris-explain" alt="Ferris throwing up their hands"/>                   | This code panics!                                |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| <img src="img/ferris/compile_fail.svg" class="ferris-explain" alt="Ferris with a question mark"/>                | This code does not compile!                      |
+| <img src="img/ferris/should_panic.svg" class="ferris-explain" alt="Ferris throwing up their hands"/>             | This code panics!                                |
 | <img src="img/ferris/not_desired_behavior.svg" class="ferris-explain" alt="Ferris with one claw up, shrugging"/> | This code does not produce the desired behavior. |
+
