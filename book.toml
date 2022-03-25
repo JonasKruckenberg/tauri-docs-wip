@@ -1,0 +1,19 @@
+[book]
+authors = ["Jonas Kruckenberg"]
+language = "en"
+multilingual = false
+src = "src"
+title = "The Tauri Manual"
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
+
+[output.html]
+additional-js = ["theme/mermaid.min.js", "theme/mermaid-init.js", "theme/ferris.js"]
+additional-css = ["theme/ferris.css"]
+
+# [output.pdf]
