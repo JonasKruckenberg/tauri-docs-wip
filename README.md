@@ -1,3 +1,5 @@
+[![documentation](https://img.shields.io/badge/documentation-github.io-purple.svg)](https://jonaskruckenberg.github.io/tauri-docs-wip)
+
 # WIP
 
 This is my work-in-progress version of the new Tauri documentation. Beware of
