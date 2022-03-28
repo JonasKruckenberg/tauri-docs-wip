@@ -1,11 +1,11 @@
 # System Tray
 
-This guide walks you through adding a tray icon to the systems' notification
-area. Tray icons have their own context menu.
+This guide walks you through adding a tray icon to the systems'
+notification area. Tray icons have their own context menu.
 
-On macOS and Ubuntu, the Tray will be located on the top right corner of your
-screen, adjacent to your battery and wifi icons. On Windows, the Tray will
-usually be located in the bottom right corner.
+On macOS and Ubuntu, the Tray will be located on the top right corner
+of your screen, adjacent to your battery and wifi icons. On Windows,
+the Tray will usually be located in the bottom right corner.
 
 ## Configuration
 
@@ -20,9 +20,10 @@ Add the following to your `tauri.conf.json` files `tauri` object:
   }
 ```
 
-`iconPath` must point to a PNG file on macOS and Linux, and a .ico file must
-exist for Windows support. `iconAsTemplate` is a boolean value that determines
-whether the image represents a Template Image on macOS.
+`iconPath` must point to a PNG file on macOS and Linux, and a .ico
+file must exist for Windows support. `iconAsTemplate` is a boolean
+value that determines whether the image represents a Template Image on
+macOS.
 
 ## Creating a System Tray
 
@@ -40,9 +41,9 @@ let tray = SystemTray::new();
 
 ## Configuring a System Tray Context Menu
 
-Optionally you can add a context menu that is visible when the tray icon is
-clicked. Import the `SystemTrayMenu`, `SystemTrayMenuItem` and `CustomMenuItem`
-types:
+Optionally you can add a context menu that is visible when the tray
+icon is clicked. Import the `SystemTrayMenu`, `SystemTrayMenuItem` and
+`CustomMenuItem` types:
 
 ```rust,ignore
 use tauri::{CustomMenuItem, SystemTrayMenu, SystemTrayMenuItem};
@@ -70,8 +71,8 @@ let tray = SystemTray::new().with_menu(tray_menu);
 
 ## Configure the App System Tray
 
-The created SystemTray instance can be set using the system_tray API on the
-tauri::Builder struct:
+The created SystemTray instance can be set using the system_tray API
+on the tauri::Builder struct:
 
 ```rust,ignore
 use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu};
@@ -88,8 +89,9 @@ fn main() {
 
 ## Listening to System Tray Events
 
-Each CustomMenuItem triggers an event when clicked. Also, Tauri emits tray icon
-click events. Use the `on_system_tray_event` callback to handle them:
+Each CustomMenuItem triggers an event when clicked. Also, Tauri emits
+tray icon click events. Use the `on_system_tray_event` callback to
+handle them:
 
 ```rust,ignore
 use tauri::Manager;
@@ -140,9 +142,9 @@ fn main() {
 
 ## Updating the System Tray
 
-The `AppHandle` struct has a `tray_handle` method, which returns a handle to the
-system tray, allowing updating tray icon and context menu items: Updating
-context menu items
+The `AppHandle` struct has a `tray_handle` method, which returns a
+handle to the system tray, allowing updating tray icon and context
+menu items: Updating context menu items
 
 ```rust,ignore
 use tauri::Manager;
@@ -156,7 +158,7 @@ fn main() {
             SystemTrayEvent::MenuItemClick { id, .. } => {
                 // get a handle to the clicked menu item
                 // note that `tray_handle` can be called anywhere,
-                // just get a `AppHandle` instance 
+                // just get a `AppHandle` instance
                 // with `app.handle()` on the setup hook
                 // and move it to another function or thread
                 let item_handle = app.tray_handle().get_item(&id);
@@ -164,7 +166,7 @@ fn main() {
                     "hide" => {
                         let window = app.get_window("main").unwrap();
                         window.hide().unwrap();
-                        // you can also `set_selected`, `set_enabled` 
+                        // you can also `set_selected`, `set_enabled`
                         // and `set_native_image` (macOS only).
                         item_handle.set_title("Show").unwrap();
                     }
@@ -180,8 +182,8 @@ fn main() {
 
 ## Updating the Tray Icon
 
-Note that `tauri::Icon` must be a `Path` variant on Linux, and Raw variant on
-Windows and macOS.
+Note that `tauri::Icon` must be a `Path` variant on Linux, and Raw
+variant on Windows and macOS.
 
 ```rust,ignore
 app.tray_handle()

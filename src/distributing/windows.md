@@ -1,66 +1,71 @@
 # Windows Application Distribution
 
-This guide provides information on code signing and uploading your app to the
-Windows Store.
+This guide provides information on code signing and uploading your app
+to the Windows Store.
 
 ## Code Signing
 
-Code signing your application lets users know that they downloaded the official
-executable of your app and not some malware that poses as your app. While it is
-not required, it improves users' confidence in your app.
+Code signing your application lets users know that they downloaded the
+official executable of your app and not some malware that poses as
+your app. While it is not required, it improves users' confidence in
+your app.
 
-The following list walks you through the necessary steps to code-sign a Windows
-application.
+The following list walks you through the necessary steps to code-sign
+a Windows application.
 
 0. **Prerequisites**
 
-   This guide assumes you run Windows, either on a physical machine or a
-   [Virtual Machine] and that you already have a working Tauri application.
+   This guide assumes you run Windows, either on a physical machine or
+   a [Virtual Machine] and that you already have a working Tauri
+   application.
 
 1. **Get a Code Signing Certificate**
 
-   To sign your application, you need to acquire a **Code Signing certificate**
-   from one of the [supported certificate authorities] like Digicert, Sectigo
-   (formerly Comodo), or Godaddy.
+   To sign your application, you need to acquire a **Code Signing
+   certificate** from one of the [supported certificate authorities]
+   like Digicert, Sectigo (formerly Comodo), or Godaddy.
 
-   To eliminate all security prompts during installation, you need an extended
-   validation (EV) code signing certificate. These certificates cost upwards of
-   400$ and require a hardware token. Depending on your country, they might also
-   be sold to companies only.
+   To eliminate all security prompts during installation, you need an
+   extended validation (EV) code signing certificate. These
+   certificates cost upwards of 400$ and require a hardware token.
+   Depending on your country, they might also be sold to companies
+   only.
 
 2. **Create `.pfx` Certificate**
 
-   You need a [PKCS 12] Certificate file to sign an executable, commonly called
-   a PFX file. We will take the certificate file (e.g. `cert.cer`) and private
-   key (e.g. `private-key.key`) you received from your certificate authority and
-   convert them into a `.pfx` file. <br> Open a PowerShell prompt and enter the
-   following command:
+   You need a [PKCS 12] Certificate file to sign an executable,
+   commonly called a PFX file. We will take the certificate file (e.g.
+   `cert.cer`) and private key (e.g. `private-key.key`) you received
+   from your certificate authority and convert them into a `.pfx`
+   file. <br> Open a PowerShell prompt and enter the following
+   command:
 
    ```powershell
-   PS C:\>openssl pkcs12 -export -in cert.cer -inkey private-key.key -out certificate.pfx
+   openssl pkcs12 -export -in cert.cer -inkey private-key.key -out certificate.pfx
    ```
 
-   Make sure you don't forget the export password when prompted, we need it in
-   the next step.
+   Make sure you don't forget the export password when prompted, we
+   need it in the next step.
 
 3. **Import Certificate**
 
-   You now need to import your newly created `.pfx` certificate into the Windows
-   Keystore. First, we need to store the export password you previously created
-   into an environment variable. The securest option is the `Get-Credential`
-   helper; Enter the following command in your PowerShell prompt:
+   You now need to import your newly created `.pfx` certificate into
+   the Windows Keystore. First, we need to store the export password
+   you previously created into an environment variable. The securest
+   option is the `Get-Credential` helper; Enter the following command
+   in your PowerShell prompt:
 
    ```powershell
-   PS C:\>$mypwd = Get-Credential `
+   $mypwd = Get-Credential `
             -UserName 'Enter password below' `
             -Message 'Enter password below'
    ```
 
-   Next, you can use the `Import-PfxCertificate` command to actually import your
-   `.pfx` file:
+   Next, you can use the `Import-PfxCertificate` command to actually
+   import your `.pfx` file:
 
    ```powershell
-   PS C:\>Import-PfxCertificate `
+   Import-PfxCertificate `
             -FilePath C:\certificate.pfx `
             -CertStoreLocation Cert:\LocalMachine\My `
             -Password $mypwd.Password
@@ -68,15 +73,15 @@ application.
 
 4. **Tauri Configuration**
 
-   To configure Tauri for code signing we need to enter a few things into our
-   `tauri.conf.json` file:
+   To configure Tauri for code signing we need to enter a few things
+   into our `tauri.conf.json` file:
 
-   - `certificateThumbprint` - The SHA-1 thumbprint of your certificate. Enter
-     the following command and copy the values for `localKeyID` **without
-     spaces**.
+   - `certificateThumbprint` - The SHA-1 thumbprint of your
+     certificate. Enter the following command and copy the values for
+     `localKeyID` **without spaces**.
 
      ```powershell
-     PS C:\>openssl pkcs12 -info -in certificate.pfx
+     openssl pkcs12 -info -in certificate.pfx
      ```
 
      For this example output the `certificateThumbprint` is <br>
@@ -87,14 +92,14 @@ application.
          localKeyID: A1 B1 A2 B2 A3 B3 A4 B4 A5 B5 A6 B6 A7 B7 A8 B8 A9 B9 A0 B0
      ```
 
-   - `digestAlgorithm` - The SHA digest algorithm used for your certificate.
-     This is likely `sha256`.
-   - `timestampUrl` - A URL pointing to a timestamp server used to verify the
-     time the certificate is signed. It's best to provide the timestamp server
-     provided by your certificate authority here.
-   - `tsp` - Enables the _Time-Stamp Protocol_ (TSP, defined by [RFC 3161])
-     instead of NTP. Some certificate authorities, like [SSL.com] only provide
-     TSP servers.
+   - `digestAlgorithm` - The SHA digest algorithm used for your
+     certificate. This is likely `sha256`.
+   - `timestampUrl` - A URL pointing to a timestamp server used to
+     verify the time the certificate is signed. It's best to provide
+     the timestamp server provided by your certificate authority here.
+   - `tsp` - Enables the _Time-Stamp Protocol_ (TSP, defined by [RFC
+     3161]) instead of NTP. Some certificate authorities, like
+     [SSL.com] only provide TSP servers.
 
    ```json
    "bundle": {
@@ -109,8 +114,8 @@ application.
 
 5. **Sign your Application**
 
-   Now you can run `tauri build` and you will see the following additional
-   output:
+   Now you can run `tauri build` and you will see the following
+   additional output:
 
    ```text
    info: signing app
@@ -123,12 +128,13 @@ application.
 
 ## Continous Integration
 
-As the above-described process is rather laborious, most developers run this
-step as an automated part of their Continous Integration (CI). For users of
-[GitHub Actions] Tauri provides the [Tauri Action], which simplifies the setup.
+As the above-described process is rather laborious, most developers
+run this step as an automated part of their Continous Integration
+(CI). For users of [GitHub Actions] Tauri provides the [Tauri Action],
+which simplifies the setup.
 
-> Note: The following example assumes you store the secret passwords and tokens
-> using [GitHub Secrets].
+> Note: The following example assumes you store the secret passwords
+> and tokens using [GitHub Secrets].
 
 <figure>
 
@@ -181,7 +187,8 @@ jobs:
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: "App v__VERSION__"
-          releaseBody: "See the assets to download this version and install."
+          releaseBody:
+            "See the assets to download this version and install."
           releaseDraft: true
           prerelease: false
 ```
@@ -196,7 +203,8 @@ jobs:
 [ssl.com]: https://www.ssl.com/
 [github actions]: https://github.com/features/actions
 [tauri action]: https://github.com/tauri-apps/tauri-action
-[github secrets]: https://docs.github.com/en/actions/reference/encrypted-secrets
+[github secrets]:
+  https://docs.github.com/en/actions/reference/encrypted-secrets
 [supported certificate authorities]:
   https://docs.microsoft.com/en-us/windows-hardware/drivers/dashboard/get-a-code-signing-certificate#extended-validation-code-signing-certificates
 [virtual machine]: ../development/vms.md

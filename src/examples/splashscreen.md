@@ -1,13 +1,15 @@
 # Splashscreen
 
-In case your Frontend is rather heavy and takes some time to load, or you need
-to perform some initialization procedures in Rust before displaying your main
-window, a splash screen can improve the loading experience for the user.
+In case your Frontend is rather heavy and takes some time to load, or
+you need to perform some initialization procedures in Rust before
+displaying your main window, a splash screen can improve the loading
+experience for the user.
 
 ## Configuration
 
-First, create a `splashscreen.html` in your `distDir` that contains the HTML
-code for a splashscreen. Then, add the following to your `tauri.conf.json`:
+First, create a `splashscreen.html` in your `distDir` that contains
+the HTML code for a splashscreen. Then, add the following to your
+`tauri.conf.json`:
 
 ```diff
 "windows": [
@@ -30,10 +32,11 @@ code for a splashscreen. Then, add the following to your `tauri.conf.json`:
 ]
 ```
 
-Your main window will be hidden, and the splashscreen window will show when your
-app is launched. Next, you'll need a way to close the splashscreen and show the
-main window when your app is ready. How you do this depends on what you are
-waiting for before closing the splashscreen.
+Your main window will be hidden, and the splashscreen window will show
+when your app is launched. Next, you'll need a way to close the
+splashscreen and show the main window when your app is ready. How you
+do this depends on what you are waiting for before closing the
+splashscreen.
 
 ## Waiting for the Frontend
 
@@ -81,8 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 ## Waiting for Rust
 
-If you are waiting for Rust code to run, put it in the `setup` callback so you
-have access to the App instance:
+If you are waiting for Rust code to run, put it in the `setup`
+callback so you have access to the App instance:
 
 ```rust,ignore
 use tauri::Manager;

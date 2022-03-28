@@ -1,20 +1,22 @@
 # Summary
 
-[Introduction](introduction.md) 
-[Prerequisites](prerequisites.md)
+[Introduction](introduction.md) [Prerequisites](prerequisites.md)
 
-- [Quick Start]()
-  - [HTML/CSS/JS]()
-  - [Vite]()
-  - [Webpack]()
+- [Quick Start](quick-start/README.md)
+
+  - [HTML/CSS/JS](quick-start/html-css-js.md)
+  - [Vite](quick-start/vite.md)
+  - [Webpack](quick-start/webpack.md)
 
 - [Background](background/README.md)
+
   - [Process Model](background/process-model.md)
   - [Inter-Process Communication](background/inter-process-communication.md)
   - [Security](background/security/README.md)
     - [Context Isolation](background/security/context-isolation.md)
- 
+
 - [Development]()
+
   - [Configuration]()
   - [Inter-Process Communication](development/inter-process-communication.md)
   - [Windows & Webviews](development/windows-and-webviews.md)
@@ -25,6 +27,7 @@
   - [Virtual Machines](development/vms.md)
 
 - [Building]()
+
   - [Building your Application](building/building-your-application.md)
   - [Linux](building/linux.md)
   - [Windows Installer](building/windows-installer.md)
@@ -33,12 +36,14 @@
   - [Reducing the App Size](building/reducing-the-app-size.md)
 
 - [Distributing]()
+
   - [Windows](distributing/windows.md)
   - [macOS](distributing/macos.md)
   - [Linux]()
   - [Updater](distributing/updater.md)
 
 - [Examples]()
+
   - [Window Customization](examples/window-customization.md)
   - [Native Application Menu](examples/native-application-menu.md)
   - [System Tray](examples/system-tray.md)

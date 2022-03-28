@@ -1,30 +1,30 @@
 # Inter-Process Communication
 
-We established the general concepts and ideas behind IPC in [Background:
-Inter-Process Communication]. This guide teaches you how to put that theory to
-practice and interact with the IPC system from both JavaScript and Rust.
+We established the general concepts and ideas behind IPC in
+[Background: Inter-Process Communication]. This guide teaches you how
+to put that theory to practice and interact with the IPC system from
+both JavaScript and Rust.
 
 ## Events
 
-Events are one-way IPC messages and come in two distinct flavors: _Global
-Events_ and _Window-specific Events_. Global events are emitted for
-application-wide lifecycle events (e.g. update events), while window-specific
-events are, as the name suggests, emitted for window lifecycle events like
-resizing, moving, or user-defined events.
+Events are one-way IPC messages and come in two distinct flavors:
+_Global Events_ and _Window-specific Events_. Global events are
+emitted for application-wide lifecycle events (e.g. update events),
+while window-specific events are, as the name suggests, emitted for
+window lifecycle events like resizing, moving, or user-defined events.
 <!-- TODO: -->
-
-
 ## Commands
 
-At its simplest, a Command is a Rust function that is invoked in response to an
-incoming IPC request. This function has access to the application state,
-windows, may take input parameters, and returns data. You can think of them
-almost like [Serverless Functions] that live in the Tauri Core process and
-communicate over IPC.
+At its simplest, a Command is a Rust function that is invoked in
+response to an incoming IPC request. This function has access to the
+application state, windows, may take input parameters, and returns
+data. You can think of them almost like [Serverless Functions] that
+live in the Tauri Core process and communicate over IPC.
 
-To turn a Rust function into a Command, add `#[tauri::command]` to the line <!-- TODO: mention invoke_handler -->
-before `fn`. This [Attribute Macro] wraps your function, handles JSON
-serialization, and injects [Special Paramaters](#special-parameters).
+To turn a Rust function into a Command, add `#[tauri::command]` to the<!-- TODO: mention invoke_handler -->
+line before `fn`. This [Attribute Macro] wraps your function, handles
+JSON serialization, and injects
+[Special Paramaters](#special-parameters).
 
 <figure>
 
@@ -37,15 +37,16 @@ fn my_custom_command() {
 
 <figcaption>
 
-Listing 2-TODO: A regular Rust function turned into a Command by the `tauri::command` macro.
+Listing 2-TODO: A regular Rust function turned into a Command by the
+`tauri::command` macro.
 
 </figcaption>
 </figure>
 
-You can use the `invoke()` function provided by the `@tauri-apps/api` package to
-call Commands from the Frontend. The function requires the Command name and
-optional parameters and returns a promise that resolves when the Command finished
-executing:
+You can use the `invoke()` function provided by the `@tauri-apps/api`
+package to call Commands from the Frontend. The function requires the
+Command name and optional parameters and returns a promise that
+resolves when the Command finished executing:
 
 <figure>
 
@@ -62,16 +63,16 @@ await invoke("my_custom_command");
 
 ### Parameters
 
-Commands can have parameters, which are defined like regular Rust function
-parameters. Tauri will reject IPC requests for a command if the argument number,
-types, or names are invalid.
+Commands can have parameters, which are defined like regular Rust
+function parameters. Tauri will reject IPC requests for a command if
+the argument number, types, or names are invalid.
 
-All parameters must implement `serde::Deserialize` so the `tauri::command` macro
-can correctly parse the incoming IPC request. Standard types such as `u8`,
-`String` or `bool` are deserializable by default, but you have to
-[derive][serde: using derive] or [manually
-implement][serde: implementing deserialize] `serde::Deserialize` for types you
-defined yourself.
+All parameters must implement `serde::Deserialize` so the
+`tauri::command` macro can correctly parse the incoming IPC request.
+Standard types such as `u8`, `String` or `bool` are deserializable by
+default, but you have to [derive][serde: using derive] or [manually
+implement][serde: implementing deserialize] `serde::Deserialize` for
+types you defined yourself.
 
 <figure>
 
@@ -87,18 +88,21 @@ fn my_command(msg: String) {
 
 #### Special Parameters
 
-Commands that only have access to the parameters passed from the Frontend aren't
-too helpful, so the `tauri::command` macro has a couple of tricks up its sleeve.
-If you specify any of the following types as parameters to your function, they
-will be _automagically_ injected by the macro.
+Commands that only have access to the parameters passed from the
+Frontend aren't too helpful, so the `tauri::command` macro has a
+couple of tricks up its sleeve. If you specify any of the following
+types as parameters to your function, they will be _automagically_
+injected by the macro.
 
 - [`tauri::Window`] - A handle to the window that invoked the Command.
 - [`tauri::AppHandle`] - A handle to the global `App` instance.
-- [`tauri::State<T>`][`tauri::state`] - Tries to inject globally managed state
-  `T`. This requires that you previously called [`manage(T)`][`manage()`].
+- [`tauri::State<T>`][`tauri::state`] - Tries to inject globally
+  managed state `T`. This requires that you previously called
+  [`manage(T)`][`manage()`].
 
 The `tauri::command` macro strips Special Parameters from the function
-signature, so they are _invisible_ to the Frontend as Listing 2-TODO shows.
+signature, so they are _invisible_ to the Frontend as Listing 2-TODO
+shows.
 
 <figure>
 
@@ -116,10 +120,10 @@ invoke("my_command");
 <figcaption>Listing 2-TODO: Special Parameters are invisible to the Frontend.</figcaption>
 </figure>
 
-You can instruct the macro to inject globally managed state by using the
-[`tauri::State`] type. This only works with types that you previously stored in
-the globaly state with [`manage()`], see the [State Management] guide for more
-details.
+You can instruct the macro to inject globally managed state by using
+the [`tauri::State`] type. This only works with types that you
+previously stored in the globaly state with [`manage()`], see the
+[State Management] guide for more details.
 
 <figure>
 
@@ -147,26 +151,28 @@ fn main() {
 
 <figcaption>
 
-Listing 2-TODO: Using `State` to inject global application state in commands.
+Listing 2-TODO: Using `State` to inject global application state in
+commands.
 
 </figcaption>
 </figure>
 
-> **Note**: It's an informal convention that you put Special Parameters before
-> any regular Parameters.
+> **Note**: It's an informal convention that you put Special
+> Parameters before any regular Parameters.
 
 ### Commands with Return Values
 
-Commands can return values to the Frontend, exactly like regular Rust functions,
-with one caveat: Return values must be representable as JSON. In Rust we say
-that the type needs to implement `serde::Serialize`.
+Commands can return values to the Frontend, exactly like regular Rust
+functions, with one caveat: Return values must be representable as
+JSON. In Rust we say that the type needs to implement
+`serde::Serialize`.
 
 Most standard types such as `u8`, `String` or `bool` already implement
-`serde::Serialize` by default and even more complex types such as `HashMap<K,V>`
-can be serialized as long as both generic types implement `serde::Serialize`.
-For types that you defined yourself you need to either [derive the
-trait][serde: using derive] or [implement it
-manually][serde: implementing serialize].
+`serde::Serialize` by default and even more complex types such as
+`HashMap<K,V>` can be serialized as long as both generic types
+implement `serde::Serialize`. For types that you defined yourself you
+need to either [derive the trait][serde: using derive] or [implement
+it manually][serde: implementing serialize].
 
 <figure>
 
@@ -221,22 +227,23 @@ console.log(data.payload);
 
 <figcaption>
 
-Listing 2-TODO: Simple and complex command return values, showing how `derive(Serde::Serialize)`
-can be used to return user-defined types.
+Listing 2-TODO: Simple and complex command return values, showing how
+`derive(Serde::Serialize)` can be used to return user-defined types.
 
 </figcaption>
 </figure>
 
 ### Error handling
 
-Rust has a standard way to represent failures in functions: The [`Result<T, E>`]
-type. It is an enum with two variants, `Ok(T)`, representing success, and
-`Err(E)`, representing error.
+Rust has a standard way to represent failures in functions: The
+[`Result<T, E>`] type. It is an enum with two variants, `Ok(T)`,
+representing success, and `Err(E)`, representing error.
 
-As you learned earlier Command invocations are represented by a JavaScript
-promise. By returning a Result from your Command you can directly influence the
-state of that promise: Returning `Ok(T)` resolves the promise with the given
-`T`, while returning `Err` rejects the promise with `E` as the error.
+As you learned earlier Command invocations are represented by a
+JavaScript promise. By returning a Result from your Command you can
+directly influence the state of that promise: Returning `Ok(T)`
+resolves the promise with the given `T`, while returning `Err` rejects
+the promise with `E` as the error.
 
 <figure>
 
@@ -250,8 +257,8 @@ fn failing_command() -> Result<String, String> {
 <figcaption>Listing 2-TODO: A Command that always fails.</figcaption>
 </figure>
 
-If you try this using real-world functions, however, you quickly run into a
-problem: No error type implements `serde::Serialize`!
+If you try this using real-world functions, however, you quickly run
+into a problem: No error type implements `serde::Serialize`!
 
 <figure>
 
@@ -272,17 +279,19 @@ fn read_file() -> Result<String, io::Error> {
 
 <figcaption>
 
-Listing 2-TODO: This code does not compile because `std::io::Error` is not serializable.
+Listing 2-TODO: This code does not compile because `std::io::Error` is
+not serializable.
 
 </figcaption>
 </figure>
 
 You could just use an error type, for example, `String` like we did in
-Listing-TODO, but that is not very _idiomatic_. Instead, we create a custom
-error type that implements `serde::Serialize`. <br> In the following example, we
-use a crate called [`thiserror`] to help create the error type. It allows you to
-turn enums into error types by deriving the `thiserror::Error` trait. You can
-consult its documentation for more details.
+Listing-TODO, but that is not very _idiomatic_. Instead, we create a
+custom error type that implements `serde::Serialize`. <br> In the
+following example, we use a crate called [`thiserror`] to help create
+the error type. It allows you to turn enums into error types by
+deriving the `thiserror::Error` trait. You can consult its
+documentation for more details.
 <!-- TODO: in the codesnippet below, consider mentioning that the custom serialize implementation is not needed if the from macro isn't used (or if from is implemented manually). Maybe this would make it too complicated -->
 ```rust,ignore
 // create the error type that represents all errors possible in our program
@@ -303,23 +312,26 @@ impl serde::Serialize for Error {
 }
 ```
 
-A custom error type has the advantage of making all possible errors explicit so
-readers can quickly identify what errors can happen. This saves other people
-(and yourself) enormous amounts of time when reviewing and refactoring code
-later. <br> It also gives you full control over the way your error type gets
-serialized. In the above example, we simply returned the error message as a
-string, but you could assign each error a code similar to C.
+A custom error type has the advantage of making all possible errors
+explicit so readers can quickly identify what errors can happen. This
+saves other people (and yourself) enormous amounts of time when
+reviewing and refactoring code later. <br> It also gives you full
+control over the way your error type gets serialized. In the above
+example, we simply returned the error message as a string, but you
+could assign each error a code similar to C.
 
 ### Async Commands
 
-If your Command spends time waiting for IO - maybe it is reading a file or
-connecting to a server - it blocks the main process for that duration. This
-means the window becomes unresponsive, and your app _freezes_. To avoid this
-problem Rust has builtin support _asynchronous functions_ through [the `Future`
-Trait]. A familiar concept if you already know about [`Promise`] and
-`async/await` in JavaScript.
+If your Command spends time waiting for IO - maybe it is reading a
+file or connecting to a server - it blocks the main process for that
+duration. This means the window becomes unresponsive, and your app
+_freezes_. To avoid this problem Rust has builtin support
+_asynchronous functions_ through [the `Future` Trait]. A familiar
+concept if you already know about [`Promise`] and `async/await` in
+JavaScript.
 
-You declare an asynchronous command by writing `async fn` instead of `fn`:
+You declare an asynchronous command by writing `async fn` instead of
+`fn`:
 
 ```rust,ignore
 #[tauri::command]
@@ -327,17 +339,19 @@ async fn async_command() {}
 ```
 
 Async Commands are executed on a thread pool using
-[`tauri::async_runtime::spawn()`], so long-running tasks no longer block the
-Core's main thread. Because Commands map to JavaScript promises in the Frontend,
-they also don't block the Frontend's main thread.
+[`tauri::async_runtime::spawn()`], so long-running tasks no longer
+block the Core's main thread. Because Commands map to JavaScript
+promises in the Frontend, they also don't block the Frontend's main
+thread.
 
-> To execute _non-async_, regular Commands on a different thread, define the
-> macro like so: `#[tauri::command(async)]`.
+> To execute _non-async_, regular Commands on a different thread,
+> define the macro like so: `#[tauri::command(async)]`.
 
 Listing-TODO shows a more complete example that uses the non-blocking
-`tokio::fs::read()` function to read a file from disk, convert it to a Utf8
-string and parse it into a Vec of lines. It also uses the previously introduced
-`thiserror` and `serde::Serialize` to create a custom Error type.
+`tokio::fs::read()` function to read a file from disk, convert it to a
+Utf8 string and parse it into a Vec of lines. It also uses the
+previously introduced `thiserror` and `serde::Serialize` to create a
+custom Error type.
 
 <figure>
 
@@ -387,12 +401,15 @@ async fn async_read_lines(path: PathBuf) -> Result<Vec<String>, Error> {
   ../understanding-tauri/inter-process-communication.md
 [`tauri::state`]: https://docs.rs/tauri/*/tauri/struct.State.html
 [`tauri::window`]: https://docs.rs/tauri/*/tauri/struct.Window.html
-[`tauri::apphandle`]: https://docs.rs/tauri/*/tauri/struct.AppHandle.html
+[`tauri::apphandle`]:
+  https://docs.rs/tauri/*/tauri/struct.AppHandle.html
 [state management]: state-management.md
-[`manage()`]: https://docs.rs/tauri/*/tauri/trait.Manager.html#method.manage
+[`manage()`]:
+  https://docs.rs/tauri/*/tauri/trait.Manager.html#method.manage
 [serde: using derive]: https://serde.rs/derive.html
 [serde: implementing serialize]: https://serde.rs/impl-serialize.html
-[serde: implementing deserialize]: https://serde.rs/impl-deserialize.html
+[serde: implementing deserialize]:
+  https://serde.rs/impl-deserialize.html
 [attribute macro]:
   https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros
 [the `future` trait]:
@@ -402,4 +419,5 @@ async fn async_read_lines(path: PathBuf) -> Result<Vec<String>, Error> {
 [`thiserror`]: https://docs.rs/thiserror/latest/thiserror/
 [`tauri::async_runtime::spawn()`]:
   https://docs.rs/tauri/*/tauri/async_runtime/fn.spawn.html
-[`result<t, e>`]: https://doc.rust-lang.org/std/result/enum.Result.html
+[`result<t, e>`]:
+  https://doc.rust-lang.org/std/result/enum.Result.html

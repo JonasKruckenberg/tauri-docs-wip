@@ -1,9 +1,9 @@
 # Window Customization
 
-Tauri provides lots of options for customizing the look and feel of your app's
-window. You can create custom titlebars, have transparent windows, enforce size
-constraints, and more. This guide contains a number of quick examples for common
-cases.
+Tauri provides lots of options for customizing the look and feel of
+your app's window. You can create custom titlebars, have transparent
+windows, enforce size constraints, and more. This guide contains a
+number of quick examples for common cases.
 
 ## Creating a Custom Titlebar
 
@@ -20,12 +20,13 @@ cases.
 <figcaption></figcaption>
 </figure>
 
-To make the custom titlebar work, you need to disable decorations for the window
-by setting [`tauri.windows.decorations`], [`WebviewWindow.setDecorations`] or
-[`WindowBuilder::decorations`] to false. Next, you need to add the HTML for the
-titlebar. Put this at the top of your `<body>` tag. Notice the
-`data-tauri-drag-region` data attribute, it allows you to drag the window around
-like a native titlebar would.
+To make the custom titlebar work, you need to disable decorations for
+the window by setting [`tauri.windows.decorations`],
+[`WebviewWindow.setDecorations`] or [`WindowBuilder::decorations`] to
+false. Next, you need to add the HTML for the titlebar. Put this at
+the top of your `<body>` tag. Notice the `data-tauri-drag-region` data
+attribute, it allows you to drag the window around like a native
+titlebar would.
 
 ```html
 <div data-tauri-drag-region class="titlebar">
@@ -47,9 +48,9 @@ like a native titlebar would.
 </div>
 ```
 
-Now you need to add some CSS for the titlebar to keep it at the top of the
-screen and style the buttons. Note that you may need to move the rest of your
-content down so that the titlebar doesn't cover it.
+Now you need to add some CSS for the titlebar to keep it at the top of
+the screen and style the buttons. Note that you may need to move the
+rest of your content down so that the titlebar doesn't cover it.
 
 ```css
 .titlebar {
