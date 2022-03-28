@@ -5,8 +5,8 @@ sent by the frontend before they get to Tauri Core, all with
 JavaScript. The secure JavaScript code that is injected by the
 Isolation pattern is referred to as the Isolation application.
 
-This is useful to validate, sanitize, and filter messages sent from the
-Frontend before they even enter the Core's secure context.
+This is useful to validate, sanitize, and filter messages sent from
+the Frontend before they even enter the Core's secure context.
 
 ## Why?
 
@@ -35,10 +35,10 @@ We highly suggest that you lock down your application whenever you use
 external Tauri APIs. As the developer, you can utilize the secure
 Isolation application to verify IPC inputs are within some expected
 parameters. For example, you may want to check that a call to read or
-write a file is not trying to get to a path outside your
-application's expected locations. <br> Another example is making
-sure that a Tauri API HTTP fetch call is only setting the Origin
-header to what your application expects it to be.
+write a file is not trying to get to a path outside your application's
+expected locations. <br> Another example is making sure that a Tauri
+API HTTP fetch call is only setting the Origin header to what your
+application expects it to be.
 
 That said, it intercepts all messages from the Frontend, so it will
 even work with always-on APIs such as [Events]. Since some events may
@@ -163,7 +163,8 @@ Isolation enabled.</figcaption>
 1. When `invoke` is called, the Message gets sent to the Isolation
    Application.
 2. Pass the message into the Isolation Application's hook. The Message
-   object has been checked to follow the minimum correct shape.<!-- TODO: something about this one is weird, idk -->
+   object has been checked to follow the minimum correct shape.
+   <!-- TODO: something about this one is weird, idk -->
 3. The return value is used as the new Message. The Isolation
    Application _may_ have modified the Message to help sanitize input.
 4. The sanitized Message is **automatically** encrypted using AES-GCM

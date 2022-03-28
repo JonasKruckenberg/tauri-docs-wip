@@ -1,7 +1,9 @@
 # Windows & Webviews
 
 ## Windows
+
 <!-- TODO: "freely choose" should be restricted since it's alphanumeric (plus some special chars) only -->
+
 A Tauri application consists of one or more windows that are managed
 by [the Core process]. Each window is identified by a unique string
 label that you can freely choose when creating the window. You can use
@@ -119,9 +121,11 @@ File tauri.conf.json
     "distDir": "dist"
 }
 ```
+
 <!-- TODO: distDir above should probably be ../dist since it's the most likely one -->
-As you learned [previously][the webview process], Tauri does not ship a
-webview but relies on the webviews provided by each operating system
+
+As you learned [previously][the webview process], Tauri does not ship
+a webview but relies on the webviews provided by each operating system
 instead. This means that not all browser APIs will be supported on all
 platforms you target, WebView2 uses an evergreen updater that always
 gives you the latest Chromium Features, while WKWebview versions are
@@ -173,7 +177,8 @@ in writing elegant cross-platform JavaScript.
 
     <figcaption>
 
-    Listing 2-TODO: Conditional compilation in vite using `TAURI_` environment variables.
+   Listing 2-TODO: Conditional compilation in vite using `TAURI_`
+   environment variables.
 
     </figcaption>
    </figure>
