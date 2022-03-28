@@ -122,7 +122,7 @@ $ pnpm test
 
 ## End-to-End Testing
 
-End-to-end Tests (E2E) tests simulate a user’s step-by-step experience, testing
+End-to-End Tests (E2E) tests simulate a user's step-by-step experience, testing
 the interactions between many components in the process.
 
 [WebDriver] is a standardized interface to interact with web documents primarily
@@ -229,7 +229,7 @@ exports.config = {
 #### Add tests
 
 Let's add a test file and a couple e2e tests to show what WDIO is capabable of.
-The test runner will load these files and autimatically run them.
+The test runner will load these files and automatically run them.
 
 Filename: test/specs/example.e2e.js
 
