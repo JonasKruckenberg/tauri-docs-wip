@@ -110,14 +110,15 @@ to our example application that just alises to the `vitest` test runner:
 Now we can run our test suite by opening a terminal and executing the following
 command:
 
+**npm**
 ```console
-$ npm test
-
-# OR
-$ yarn test
-
-# OR
-$ pnpm test
+npm test
+```
+```console
+yarn test
+```
+```console
+pnpm test
 ```
 
 ## End-to-End Testing
@@ -138,7 +139,7 @@ Tauri supports the [WebDriver] interface by leveraging the native platform's
 Install the latest tauri-driver or update an existing installation by running:
 
 ```console
-$ cargo install tauri-driver
+cargo install tauri-driver
 ```
 
 Because we currently utilize the platform's native [WebDriver] server, there are
@@ -178,14 +179,17 @@ package for testing with WebDriver. Its ecosystem also includes various plugins
 Open a terminal and run the the WebdriverIO starter toolkit in your project with
 the following command:
 
+**npm**
 ```console
-$ npx wdio .
-
-# OR
-$ yarn create wdio .
-
-# OR
-$ pnpm create wdio .
+npx wdio .
+```
+**yarn**
+```console
+yarn create wdio .
+```
+**pnpm**
+```console
+pnpm create wdio .
 ```
 
 This installs all necessary packages for you and generates a `wdio.conf.js`
@@ -288,14 +292,17 @@ like `$` and its exposed methods, are covered by the [WebdriverIO API docs].
 
 To run your test suite, open a terminal and execute the following command:
 
+**npm**
 ```console
-$ npx wdio run wdio.conf.json
-
-# OR
-$ yarn wdio run wdio.conf.json
-
-# OR
-$ pnpm wdio run wdio.conf.json
+npx wdio run wdio.conf.json
+```
+**yarn**
+```console
+yarn wdio run wdio.conf.json
+```
+**pnpm**
+```console
+pnpm wdio run wdio.conf.json
 ```
 
 You should see the following output:
@@ -340,14 +347,17 @@ popular choice.
 
 #### Install the test runner
 
+**npm**
 ```console
-$ npm install mocha chai selenium-webdriver
-
-# OR
-$ yarn add -D mocha chai selenium-webdriver
-
-# OR
-$ pnpm add -D mocha chai selenium-webdriver
+npm install mocha chai selenium-webdriver
+```
+**yarn**
+```console
+yarn add -D mocha chai selenium-webdriver
+```
+**pnpm**
+```console
+pnpm add -D mocha chai selenium-webdriver
 ```
 
 #### Connect your Tauri app
@@ -482,14 +492,17 @@ tests, as we have to set up a few more WebDriver related items.
 
 To run your test suite, open a terminal and execute the following command:
 
+**npm**
 ```console
-$ npx mocha
-
-# OR
-$ yarn mocha
-
-# OR
-$ pnpm mocha
+npx mocha
+```
+**yarn**
+```console
+yarn mocha
+```
+**pnpm**
+```console
+pnpm mocha
 ```
 
 We should see output the following output:

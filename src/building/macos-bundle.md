@@ -25,7 +25,7 @@ CLI uses your machine's architecture, but you can configure a different target
 using the `--target` flag:
 
 ```console
-$ tauri build --target aarch64-apple-darwin
+tauri build --target aarch64-apple-darwin
 ```
 
 Supported targets are:

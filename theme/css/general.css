@@ -255,3 +255,18 @@ figcaption {
 .ayu img[src$="#gh-light-mode-only"] {
   display: none;
 }
+code.language-console::before {
+  content: '$ ';
+}
+
+.light code.language-console::before, .rust code.language-console::before {
+  color: #b21e00;
+}
+
+.ayu code.language-console::before {
+  color: #ffee99;
+}
+
+code.language-powershell::before {
+  content: "PS " attr(data-cwd) ">";
+} 

@@ -31,7 +31,7 @@ ARM - you can select te correct Standalone Installer or even a fixed version.
 To install Rust on macOS, open a terminal and enter the following command:
 
 ```console
-$ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 
 The command downloads a script and starts the installation of the `rustup` tool,
@@ -46,7 +46,7 @@ You also need to install CLang and macOS development dependencies. To do this,
 run the following command in your terminal:
 
 ```console
-$ xcode-select --install
+xcode-select --install
 ```
 
 ## Setting Up Linux
@@ -54,7 +54,7 @@ $ xcode-select --install
 To install Rust on Linux, open a terminal and enter the following command:
 
 ```console
-$ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 
 The command downloads a script and starts the installation of the `rustup` tool,
@@ -71,8 +71,8 @@ and `webkit2gtk`. Below are commands for a few popular distributions.
 #### Debian
 
 ```console
-$ sudo apt update
-$ sudo apt install libwebkit2gtk-4.0-dev \
+sudo apt update
+sudo apt install libwebkit2gtk-4.0-dev \
     build-essential \
     curl \
     wget \
@@ -85,8 +85,8 @@ $ sudo apt install libwebkit2gtk-4.0-dev \
 #### Arch
 
 ```console
-$ sudo pacman -Syu
-$ sudo pacman -S --needed \
+sudo pacman -Syu
+sudo pacman -S --needed \
     webkit2gtk \
     base-devel \
     curl \
@@ -102,14 +102,14 @@ $ sudo pacman -S --needed \
 #### Fedora
 
 ```console
-$ sudo dnf check-update
-$ sudo dnf install webkit2gtk3-devel.x86_64 \
+sudo dnf check-update
+sudo dnf install webkit2gtk3-devel.x86_64 \
     openssl-devel \
     curl \
     wget \
     libappindicator-gtk3 \
     librsvg2-devel
-$ sudo dnf group install "C Development Tools and Libraries"
+sudo dnf group install "C Development Tools and Libraries"
 ```
 
 ### Windows Subsystem for Linux (WSL)
@@ -123,7 +123,7 @@ it's the one we recommend installing.
 Open the X server and then run
 
 ```console
-$ export DISPLAY=:0
+export DISPLAY=:0
 ```
 
 in the terminal. You should now be able to run any graphical application via the
@@ -134,20 +134,20 @@ terminal.
 You'll need to run a command that is slightly more complex than WSL 1:
 
 ```console
-$ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 ```
 
 and you need to add -ac to the X server as an argument. If for some reason this
 command doesn't work you can use an alternative command such as:
 
 ```console
-$ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | sed 's/.* //g'):0
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | sed 's/.* //g'):0
 ```
 
 or you can manually find the Address using:
 
 ```console
-$ cat /etc/resolve.conf | grep nameserver
+cat /etc/resolve.conf | grep nameserver
 ```
 
 > Don't forget that you'll have to use the "export" command anytime you want to
@@ -163,20 +163,20 @@ file or running the `cargo upgrade` command that is part of the [`cargo-edit`]
 tool. Open a terminal and enter the following command:
 
 ```console
-$ cargo upgrade
+cargo upgrade
 ```
 
 Updating Rust itself is easy via `rustup`. Open a terminal and run the following
 command:
 
 ```console
-$ rustup update
+rustup update
 ```
 
 `rustup` can also be used to uninstall Rust from your machine fully:
 
 ```console
-$ rustup self uninstall
+rustup self uninstall
 ```
 
 <!-- TODO: Unistall Webview2 -->
@@ -187,7 +187,7 @@ To check whether you have Rust installed correctly, open a shell and enter this
 line:
 
 ```console
-$ rustc --version
+rustc --version
 ```
 
 You should see the version number, commit hash, and commit date for the latest

@@ -239,7 +239,7 @@ public-key signatures.
    following command:
 
    ```console
-   $ tauri signer generate -w ~/.tauri/myapp.key
+   tauri signer generate -w ~/.tauri/myapp.key
    ```
 
 3. **Tauri Configuration**

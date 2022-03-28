@@ -72,7 +72,7 @@ notarize your application. Unsigned software cannot be run, so contrary to
    4. Convert the `.p12` file to base64 running the following script on the
       terminal: `
       ```console
-      $ openssl base64 -in /path/to/certificate.p12 -out certificate-base64.txt
+      openssl base64 -in /path/to/certificate.p12 -out certificate-base64.txt
       ```
    5. Set the contents of the `certificate-base64.txt` file to the
       `APPLE_CERTIFICATE` environment variable.

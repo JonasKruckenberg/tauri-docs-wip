@@ -10,18 +10,31 @@ platforms:
 
 You can install the [`tauricon`] package either locally as a dev dependency:
 
+**npm**
 ```console
-$ npm install -D github:tauri-apps/tauricon
-# OR
-$ yarn add -D github:tauri-apps/tauricon
+npm install -D github:tauri-apps/tauricon
 ```
-
+**yarn**
+```console
+yarn add -D github:tauri-apps/tauricon
+```
+**pnpm**
+```console
+pnpm add -D github:tauri-apps/tauricon
+```
 or globally:
 
+**npm**
 ```console
-$ npm install -g github:tauri-apps/tauricon
-# OR
-$ yarn add -g github:tauri-apps/tauricon
+npm install -g github:tauri-apps/tauricon
+```
+**yarn**
+```console
+yarn add -g github:tauri-apps/tauricon
+```
+**pnpm**
+```console
+pnpm add -g github:tauri-apps/tauricon
 ```
 
 If you decide to use `tauricon` as a local package with npm (not yarn), you need

@@ -153,13 +153,13 @@ GDB that enables pretty-printing rust types in the GDB output.
 To debug a Rust binary, build the binary:
 
 ```console
-$ cargo build --debug
+cargo build --debug
 ```
 
 And then load it into GDB:
 
 ```console
-$ rust-gdb target/debug/<app name>
+rust-gdb target/debug/<app name>
 ```
 
 ### LLDB
@@ -171,13 +171,13 @@ by default. It wraps [LLDB] to provide pretty-printing rust types.
 To debug a Rust binary, build the binary:
 
 ```console
-$ cargo build --debug
+cargo build --debug
 ```
 
 And then load it into LLDB:
 
 ```console
-$ rust-lldb target/debug/<app name>
+rust-lldb target/debug/<app name>
 ```
 
 ### Panics
@@ -210,14 +210,17 @@ As an alternative to the ubiquitous `console.log` debugging,
 to the Rust version. <br> You can install it from npm with the following
 command:
 
+**npm**
 ```console
-$ npm install --save-dev tauri-plugin-log-api
-
-# OR
-$ yarn add -D tauri-plugin-log-api
-
-#OR
-$ pnpm add -D tauri-plugin-log-api
+npm install --save-dev tauri-plugin-log-api
+```
+**yarn**
+```console
+yarn add -D tauri-plugin-log-api
+```
+**pnpm**
+```console
+pnpm add -D tauri-plugin-log-api
 ```
 
 Now you can emit logs using the `trace()`, `debug()`, `info()`, `warn()` and

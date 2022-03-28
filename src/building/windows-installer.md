@@ -15,8 +15,9 @@ the `--target` flag:
 
 <figure>
 
+<!-- TODO make powershell -->
 ```console
-$ tauri build --target i686-pc-windows-msvc
+tauri build --target i686-pc-windows-msvc
 ```
 
 <figcaption>Listing 3-TODO: Building a Tauri application for 32-bit windows.</figcaption>

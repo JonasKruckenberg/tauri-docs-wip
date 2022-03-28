@@ -4,7 +4,7 @@ The Tauri bundler is part of the Tauri CLI and lets you compile your binary, pac
 prepare a final bundle with  a single command:
 
 ```console
-$ tauri build
+tauri build
 ```
 
 Like the `tauri dev` command, the first time you run this, it takes some time to

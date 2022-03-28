@@ -10,10 +10,6 @@ function playground_text(playground) {
     if (window.ace && code_block.classList.contains("editable")) {
         let editor = window.ace.edit(code_block);
         return editor.getValue();
-    } else if (code_block.classList.contains("console")) {
-        return code_block.textContent.replace('$ ','')
-    } else if (code_block.classList.contains("powershell")) {
-        return code_block.textContent.replace("PS C:\\>", '')
     } else {
         return code_block.textContent;
     }
@@ -173,14 +169,17 @@ function playground_text(playground) {
         Array
         code_nodes
             .filter(function (node) {return !node.classList.contains("editable"); })
-            .forEach(function (block) { hljs.highlightBlock(block); });
+            .forEach(function (block) { hljs.highlightElement(block); });
     } else {
-        code_nodes.forEach(function (block) { hljs.highlightBlock(block); });
+        code_nodes.forEach(function (block) { hljs.highlightElement(block); });
     }
 
     // Adding the hljs class gives code blocks the color css
     // even if highlighting doesn't apply
-    code_nodes.forEach(function (block) { block.classList.add('hljs'); });
+    code_nodes.forEach(function (block) { 
+        block.classList.add('hljs'); 
+        block.dataset.cwd = Array.from(block.classList.values()).find(el => el.startsWith('cwd='))?.replace('cwd=','') || 'C:\\'
+    });
 
     Array.from(document.querySelectorAll("code.language-rust")).forEach(function (block) {
 

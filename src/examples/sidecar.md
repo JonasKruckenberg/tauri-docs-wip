@@ -38,7 +38,7 @@ To find your current platforms' target triple, open a terminal and enter the
 following command:
 
 ```console
-$ rustc -Vv | grep host
+rustc -Vv | grep host
 ```
 
 Here's a Node.js script to append the target triple to a binary:
