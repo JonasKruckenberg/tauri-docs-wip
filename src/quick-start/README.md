@@ -7,9 +7,7 @@
 
 [![Vite Logo](../img/vite.svg) **Vite**](./vite.md)
 
-
 [![Webpack Logo](../img/webpack.svg) **Webpack**](./webpack.md)
-
 
 [![HTML5 Logo](../img/HTML5.svg) **HTML/CSS/JS**](./html-css-js.md)
 

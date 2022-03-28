@@ -25,14 +25,19 @@ version it for reproducible builds, we also distribute the CLI as an
 NPM package: [`@tauri-apps/cli`].
 
 **npm**
+
 ```console
 npm install --save-dev @tauri-apps/cli
 ```
+
 **yarn**
+
 ```console
 yarn add -D @tauri-apps/cli
 ```
+
 **pnpm**
+
 ```console
 pnpm add -D @tauri-apps/cli
 ```

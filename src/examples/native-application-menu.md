@@ -1,16 +1,16 @@
 # Native Application Menu
 
-Native application menus can be attached to individual windows or the whole
-application. Note that window-specific menus are only supported on Windows and
-Linux, but not on macOS.
+Native application menus can be attached to individual windows or the
+whole application. Note that window-specific menus are only supported
+on Windows and Linux, but not on macOS.
 
 ## Creating a Menu
 
-To create a native window menu, import the `Menu`, `Submenu`, `MenuItem` and
-`CustomMenuItem` types. The `MenuItem` enum contains a collection of
-platform-specific items (currently not implemented on Windows). The
-`CustomMenuItem` allows you to create your own menu items and add special
-functionality to them.
+To create a native window menu, import the `Menu`, `Submenu`,
+`MenuItem` and `CustomMenuItem` types. The `MenuItem` enum contains a
+collection of platform-specific items (currently not implemented on
+Windows). The `CustomMenuItem` allows you to create your own menu
+items and add special functionality to them.
 
 ```rust,ignore
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
@@ -32,8 +32,8 @@ let menu = Menu::new()
 
 ## Adding the Menu to all Windows
 
-The defined menu can be set to all windows using the `menu` method of the
-`tauri::Builder` struct:
+The defined menu can be set to all windows using the `menu` method of
+the `tauri::Builder` struct:
 
 ```rust,ignore
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
@@ -49,8 +49,8 @@ fn main() {
 
 ## Adding the Menu to a Specific Window
 
-You can create a window and set the menu to be used. This allows defining a
-specific menu set for each application window.
+You can create a window and set the menu to be used. This allows
+defining a specific menu set for each application window.
 
 ```rust,ignore
 use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
@@ -73,9 +73,9 @@ fn main() {
 
 ## Listening to Events on Custom Menu Items
 
-Each `CustomMenuItem` triggers an event when clicked. Use the `on_menu_event`
-callback to handle them, either on the global `tauri::Builder` or on an specific
-window.
+Each `CustomMenuItem` triggers an event when clicked. Use the
+`on_menu_event` callback to handle them, either on the global
+`tauri::Builder` or on an specific window.
 
 ### Listening to Events on Global Menus
 
@@ -141,8 +141,8 @@ fn main() {
 
 ## Updating Menu Items
 
-The `Window` struct has a `menu_handle` method, which allows updating menu
-items:
+The `Window` struct has a `menu_handle` method, which allows updating
+menu items:
 
 ```rust,ignore
 fn main() {

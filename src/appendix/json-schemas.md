@@ -6,17 +6,17 @@
 
 ```json
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "additionalProperties": false,
-    "required": ["url", "version"],
-    "properties": {
-        "url": { "type": "string" },
-        "version": { "type": "string" },
-        "pub_date": { "type": "string" },
-        "notes": { "type": "string" },
-        "signature": { "type": "string" }
-    }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["url", "version"],
+  "properties": {
+    "url": { "type": "string" },
+    "version": { "type": "string" },
+    "pub_date": { "type": "string" },
+    "notes": { "type": "string" },
+    "signature": { "type": "string" }
+  }
 }
 ```
 

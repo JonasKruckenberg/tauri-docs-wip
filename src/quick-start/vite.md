@@ -7,6 +7,7 @@
 ## Scaffold the Project
 
 {{#include ../.fragments/cta-tip.md }}
+
 > Just follow the prompts and select the `create-vite` recipe!
 
 ## Create the Frontend

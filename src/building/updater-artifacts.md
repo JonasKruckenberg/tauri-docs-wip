@@ -1,11 +1,13 @@
 # Updater Artifacts
 
-The Tauri bundler automatically generates update artifacts if the updater is
-enabled in `tauri.conf.json` Your update artifacts are automatically signed if
-the bundler can locate your private and public key.
+The Tauri bundler automatically generates update artifacts if the
+updater is enabled in `tauri.conf.json` Your update artifacts are
+automatically signed if the bundler can locate your private and public
+key.
 
-The signature can be found in the `sig` file. The signature can be uploaded to
-GitHub safely or made public if your private key is secure.
+The signature can be found in the `sig` file. The signature can be
+uploaded to GitHub safely or made public if your private key is
+secure.
 
 ### macOS
 
@@ -21,8 +23,8 @@ target/release/bundle
 
 ### Windows
 
-On Windows, Tauri creates a .zip from the MSI; when downloaded and validated, we
-run the MSI install.
+On Windows, Tauri creates a .zip from the MSI; when downloaded and
+validated, we run the MSI install.
 
 ```text
 target/release

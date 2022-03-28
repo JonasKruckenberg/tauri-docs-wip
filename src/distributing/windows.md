@@ -44,8 +44,8 @@ a Windows application.
    openssl pkcs12 -export -in cert.cer -inkey private-key.key -out certificate.pfx
    ```
 
-   Make sure you don't forget the export password when prompted, we need
-   it in the next step.
+   Make sure you don't forget the export password when prompted, we
+   need it in the next step.
 
 3. **Import Certificate**
 
