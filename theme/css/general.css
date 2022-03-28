@@ -255,6 +255,31 @@ figcaption {
 .ayu img[src$="#gh-light-mode-only"] {
   display: none;
 }
+
+.card-wrapper {
+  margin-top: 2.5em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+.card-wrapper a {
+  padding: 1.5rem;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center; 
+  color: var(--fg);
+  background-color: var(--quote-bg);
+  border: 0.1em solid var(--quote-border);
+}
+
+.card-wrapper img {
+  width: 100px;
+  height: 100px;
+}
+
 code.language-console::before {
   content: '$ ';
 }
