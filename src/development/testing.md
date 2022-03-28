@@ -9,7 +9,7 @@ of tests:
 
 - **Unit Tests** - Test frontend and Core functionality independently in
   isolated contexts.
-- **End-to-End Tests** (E2E) - Spiin up full instances of your app and simulate
+- **End-to-End Tests** (E2E) - Spin up full instances of your app and simulate
   real user interactions to make sure individually tested components work well
   together.
 

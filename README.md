@@ -68,7 +68,17 @@ see in the style guide below:
 
   With code examples that are written in Rust and JavaScript, always order the code blocks `Rust > JavaScript`.
 
+- **Correctly capitalize brands**
+
+  Use the correct capitalization for brand names, such as Tauri instead of tauri, or macOS instead of Macos.
+
+- **Use title case for titles**
+
+  Use [title case] for titles and [sentence case] for prose.
+
 [reference-style links]:
   https://www.markdownguide.org/basic-syntax/#reference-style-links
 [prettier]: https://prettier.io/playground
 [rust playground]: https://play.rust-lang.org/
+[title case]: https://en.wikipedia.org/wiki/Title_case
+[sentence case]: https://en.wikipedia.org/wiki/Letter_case#Sentence_case
