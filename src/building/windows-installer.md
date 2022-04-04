@@ -1,7 +1,7 @@
 # Windows Installer
 
 Tauri applications for Windows are distributed as Microsoft Installer
-(`.msi` files). The Tauri CLI bundles your application binary and
+files (`.msi`). The Tauri CLI bundles your application binary and
 additional resources in this format if you build on windows. This
 guide provides information about available customization options for
 the installer.

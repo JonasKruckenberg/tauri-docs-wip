@@ -22,9 +22,9 @@ command does several other things for you:
 
 2. **Build the Rust Binary**
 
-   The bundler calls `cargo build` under the hood and compile the Rust
-   project into a single executable. This step also _inlines_ your
-   previously generated Frontend files into the executable. The
+   The bundler calls `cargo build` under the hood and compiles the
+   Rust project into a single executable. This step also _inlines_
+   your previously generated Frontend files into the executable. The
    compiled executable is placed in the `src-tauri/target/release`
    folder.
 
@@ -51,6 +51,7 @@ It will detect your operating system and build a bundle accordingly.
 It currently supports:
 
 - Windows: `.exe`, `.msi`, `.msi.zip` (updater)
+  <!-- TODO: Don't mention .exe as it is only re-distributable under really specific requirements -->
 - macOS: `.app`, `.dmg`, `.app.tar.gz` (updater)
 - Linux: `.deb`, `.AppImage`, `.AppImage.tar.gz` (updater)
 

@@ -10,6 +10,8 @@ official executable of your app and not some malware that poses as
 your app. While it is not required, it improves users' confidence in
 your app.
 
+<!-- TODO: maybe mention EV signing which removes the annoying prompts too. can be only done on an actual windows machine with a hardware token tho -->
+
 The following list walks you through the necessary steps to code-sign
 a Windows application.
 

@@ -66,10 +66,10 @@ shape:
 }
 ```
 
-The only required keys are `url` and `version`; all others are
+The required keys are `url`, `version` and `signature`; all others are
 optional. `pub_date`must be formated according to [ISO 8601] if
 present and `signature` must be a valid signature generated with the
-Tauri Cli.
+Tauri CLI (content of the generated `.sig` file<!--TODO-->).
 
 If no update is required your server must respond with a status code
 of [204 No Content].
@@ -112,10 +112,11 @@ The format of this file is detailed below:
 }
 ```
 
-The only required keys are `version` and `platforms.<platform>.url`;
-All others are optional. `pub_date`must be formated according to [ISO
-8601] if present and <br> `platforms.<platform>.signature` must be a
-valid signature generated with the Tauri CLI.
+The required keys are `version`, `platforms.<platform>.url` and
+`platforms.<platform>.signature`; All others are optional. `pub_date`
+must be formated according to [ISO 8601] if present and <br>
+`platforms.<platform>.signature` must be a valid signature generated
+with the Tauri CLI (content of `.sig`).<!--TODO-->
 
 ## Built-in Update Dialog
 
@@ -128,6 +129,8 @@ update response. If the user accepts, the update is downloaded and
 installed. Afterward, the user is prompted to restart the application.
 
 ## Programmatic API
+
+<!-- TODO: https://docs.rs/tauri/1.0.0-rc.6/tauri/updater/struct.UpdateBuilder.html -->
 
 If you want to customize the dialog or customize the update experience
 in general, you may use the [`@tauri-apps/api/updater`] module to do
@@ -168,7 +171,7 @@ body       Note announced by the server
 ```
 
 <figure>
-
+<!-- TODO: outdated, updater event are part of RunEvent now -->
 ```rust,ignore
 window.listen("tauri://update-available".to_string(), move |msg| {
     println!("New version available: {:?}", msg);
@@ -202,7 +205,7 @@ install is complete. You can then ask to restart the application.
 listening to this event even if the dialog is enabled.
 
 <figure>
-
+<!-- TODO: outdated, updater event are part of RunEvent now -->
 ```rust,ignore
 window.listen("tauri://update-status".to_string(), move |msg| {
     println!("New status: {:?}", msg);
@@ -223,7 +226,8 @@ listen("tauri://update-status", function (res) {
 ## Signing Updates
 
 The updater offers built-in signature checking to ensure your update
-is authentic and can be safely installed. When present, the update
+is authentic and can be safely installed. When present, the
+update<!-- TODO: rephrase this to show that signing is required -->
 response's `signature` field and the downloaded artifact will be
 checked against the configured `pubkey` using [Minisign], a simple
 signature system using [Ed25519] public-key signatures.
@@ -242,8 +246,8 @@ signature system using [Ed25519] public-key signatures.
      key is safe to share with others and should be added to your
      `tauri.conf.json`.
    - **A Private key** (`privkey`) - Used to sign your update and
-     should **NEVER** be shared with anyone. If you lose this key,
-     you'll NOT be able to publish a new update to the current user
+     should **NEVER** be shared with anyone. If you lose this key, you
+     will NOT be able to publish a new update to the current user
      base. It is crucial to store it in a safe place where you can
      always access it.
 

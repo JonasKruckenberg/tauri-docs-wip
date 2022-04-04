@@ -15,9 +15,10 @@ and notarize your application. Unsigned software cannot be run, so
 contrary to [Windows Code Signing] this is not optional for macOS.
 
 0. **Prerequisites**
+   <!-- TODO: I'd prefer to not mention VMs here as apple doesn't allow running macOS on non-apple hardware -->
 
-   This guide assumes you run Windows, either on a physical machine or
-   a [Virtual Machine], and that you already have a working Tauri
+   This guide assumes you run macOS, either on a physical machine or a
+   [Virtual Machine], and that you already have a working Tauri
    application. You also need Xcode 11 or newer and an Apple Developer
    account enrolled in the [Apple Developer Program].
 
@@ -59,6 +60,8 @@ contrary to [Windows Code Signing] this is not optional for macOS.
    To have the Tauri bundler sign your application, you need to
    configure it. This is done by setting a number of environment
    variables.
+   <!-- TODO: I kinda miss the tldr section here -->
+   <!-- TODO: provider short name is missing -->
 
    #### Certificate environment variables
 

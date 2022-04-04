@@ -57,11 +57,13 @@ customize your application bundle:
 
 - **Bundle name** - Your apps human-readable name. Configured by the
   [`package.productName`] property.
+  <!-- TODO: Do we want to mention the fallback values here? -->
 - **Bundle version** - Your apps version. Configured by the
   [`package.version`] property.
 - **Application category** - The category that describes your app.
   Configured by the [`tauri.bundle.category`] property. You can see a
   list of macOS categories [here][macos app categories].
+  <!-- TODO: category is used in .deb too -->
 - **Copyright** - A copyright string associated with your app.
   Configured by the [`tauri.bundle.copyright`] property.
 - **Bundle icon** - Your apps icon. Uses the first `.icns` file listed
@@ -73,6 +75,7 @@ customize your application bundle:
 - **[Entitlements.plist file]** - Entitlements control what APIs your
   app will have access to. Configured by the
   [`tauri.bundle.macOS.entitlements`] property.
+  <!-- TODO: Do we want to mention Info.plist too? (tauri picks that one up automatically) -->
 - **Exception domain** - an insecure domain that your application can
   access such as a `localhost` or a remote `http` domain. It is a
   convenience configuration around
@@ -84,12 +87,15 @@ customize your application bundle:
   environment variables to the app; without that, you'll have trouble
   using system programs because the `PATH` environment variable isn't
   correct. Enable it with [`tauri.bundle.macOS.useBootstrapper`].
+  <!-- TODO: https://github.com/tauri-apps/tauri/pull/3832 -->
 
 > These options generate the application bundle [Info.plist file]. You
 > can extend the generated file with your own `Info.plist` file stored
 > on the Tauri folder (`src-tauri` by default). The CLI merges both
 > `.plist` files on production, and the core layer embeds it on the
 > binary on development.
+
+<!-- TODO: ^This one is kinda hard to understand -->
 
 [application bundle]:
   https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html
