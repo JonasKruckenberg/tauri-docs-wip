@@ -8,12 +8,12 @@ quirks and customization opportunities.
 ## AppImage
 
 AppImage is a distribution format that does not rely on packages
-installed on the end-user system <!-- actually not 100% correct -->
-and instead bundles all dependencies and files needed by the
-application. For this reason, the output file is larger but easier to
-distribute since it is supported on many Linux distributions and can
-be executed without installation, just making the file executable
-(`chmod a+x MyProject.AppImage`) and running it
+installed on the end-user system and instead bundles all
+dependencies<!-- TODO: actually not 100% correct --> and files needed
+by the application. For this reason, the output file is larger but
+easier to distribute since it is supported on many Linux distributions
+and can be executed without installation, just making the file
+executable (`chmod a+x MyProject.AppImage`) and running it
 (`./MyProject.AppImage`).
 
 <!-- TODO: add note about building on the oldest system you want to support -->

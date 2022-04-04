@@ -25,6 +25,7 @@ The Tauri CLI will bundle all sidecars into the final package.
 }
 ```
 
+<!-- TODO: scope -->
 <figcaption>Listing 4-TODO: </figcaption>
 </figure>
 
@@ -76,6 +77,7 @@ Tauri takes care of bundling the Sidecar binary, but you are in charge
 of actually running it. This means you are also in charge of killing
 the child process when your app closes; otherwise, you pollute the
 users' machine with orphan processes.
+<!-- TODO: Not quite correct, tauri tries to cleanup sidecars (unless std::process::exit is used directly) -->
 
 ### Rust
 

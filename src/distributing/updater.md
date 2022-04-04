@@ -69,7 +69,7 @@ shape:
 The required keys are `url`, `version` and `signature`; all others are
 optional. `pub_date`must be formated according to [ISO 8601] if
 present and `signature` must be a valid signature generated with the
-Tauri CLI (content of the generated `.sig` file<!--TODO-->).
+Tauri CLI (content of the generated `.sig` file<!-- TODO -->).
 
 If no update is required your server must respond with a status code
 of [204 No Content].
@@ -116,7 +116,7 @@ The required keys are `version`, `platforms.<platform>.url` and
 `platforms.<platform>.signature`; All others are optional. `pub_date`
 must be formated according to [ISO 8601] if present and <br>
 `platforms.<platform>.signature` must be a valid signature generated
-with the Tauri CLI (content of `.sig`).<!--TODO-->
+with the Tauri CLI (content of `.sig`).<!-- TODO -->
 
 ## Built-in Update Dialog
 
