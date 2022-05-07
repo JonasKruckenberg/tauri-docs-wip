@@ -4,7 +4,7 @@
 
 - [Quick Start](quick-start/README.md)
 
-  - [HTML/CSS/JS](quick-start/html-css-js.md)
+  - [HTML/CSS/JS](quick-start/html-css-js.md)[![Draft](https://img.shields.io/badge/Draft-ffa700.svg)]()
   - [Vite](quick-start/vite.md)
   - [Webpack](quick-start/webpack.md)
 
