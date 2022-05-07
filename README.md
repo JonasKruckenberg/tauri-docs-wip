@@ -10,8 +10,8 @@ Beware of typos, inaccuracies, mistakes, and missing pages!
 | Title                                                                      | Status                                                                       |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | [Introduction](introduction.md)                                            | [![Want Help](https://img.shields.io/badge/Status-Want%20Help-1abc9c.svg)]() |
-| [Prerequisites](prerequisites.md)                                          |                                                                              |
-| [Quick Start](quick-start/README.md)                                       |                                                                              |
+| [Prerequisites](prerequisites.md)                                          | [![Ready](https://img.shields.io/badge/Ready-1abc9c.svg)]()                  |
+| [Quick Start](quick-start/README.md)                                       | [![Migrated](https://img.shields.io/badge/Ready.svg)]()                      |
 | - [HTML/CSS/JS](quick-start/html-css-js.md)                                |                                                                              |
 | - [Vite](quick-start/vite.md)                                              |                                                                              |
 | - [Webpack](quick-start/webpack.md)                                        |                                                                              |
