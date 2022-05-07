@@ -1,6 +1,7 @@
 # Summary
 
 [Introduction](introduction.md)[![Draft](https://img.shields.io/badge/Draft-ffa700.svg)]()
+
 [Prerequisites](prerequisites.md)[![Draft](https://img.shields.io/badge/Draft-ffa700.svg)]()
 
 - [Quick Start](quick-start/README.md)[![Draft](https://img.shields.io/badge/Draft-ffa700.svg)]()
