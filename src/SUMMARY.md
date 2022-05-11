@@ -2,10 +2,8 @@
 
 [Introduction](introduction.md)[![Draft]]()
 
-[Prerequisites](prerequisites.md)[![Ready]]()
-
-- [Quick Start](quick-start/README.md)[![Draft]]()
-
+- [Getting Started](quick-start/README.md)[![Draft]]()
+  - [Prerequisites](prerequisites.md)[![Migrated]]()
   - [HTML/CSS/JS](quick-start/html-css-js.md)[![Draft]]()
   - [Vite](quick-start/vite.md)[![Draft]]()
   - [Webpack](quick-start/webpack.md)[![Draft]]()
