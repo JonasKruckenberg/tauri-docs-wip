@@ -2,7 +2,7 @@
 
 [Introduction](introduction.md)[![Draft]]()
 
-[Prerequisites](prerequisites.md)[![Ready]]()
+[Prerequisites](prerequisites.md)[![Migrated]]()
 
 - [Quick Start](quick-start/README.md)[![Draft]]()
 
