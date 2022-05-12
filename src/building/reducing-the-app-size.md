@@ -334,6 +334,8 @@ bytes!
 The easiest way is to use the famous `strip` utility to remove this
 debugging information.
 
+<!-- TODO: Add note that the bundler does run this command too -->
+
 ```bash
 strip target/release/my_application
 ```

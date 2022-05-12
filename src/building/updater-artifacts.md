@@ -1,13 +1,15 @@
 # Updater Artifacts
 
 The Tauri bundler automatically generates update artifacts if the
-updater is enabled in `tauri.conf.json` Your update artifacts are
+updater is enabled in `tauri.conf.json`. Your update artifacts are
 automatically signed if the bundler can locate your private and public
 key.
 
 The signature can be found in the `sig` file. The signature can be
 uploaded to GitHub safely or made public if your private key is
 secure.
+
+<!-- TODO: Add note that updater only works if app is distributed in these formats. Same for the os specific pages? -->
 
 ### macOS
 

@@ -2,6 +2,8 @@
 
 ## Windows
 
+<!-- TODO: "freely choose" should be restricted since it's alphanumeric (plus some special chars) only -->
+
 A Tauri application consists of one or more windows that are managed
 by [the Core process]. Each window is identified by a unique string
 label that you can freely choose when creating the window. You can use
@@ -43,7 +45,7 @@ various options.
 
 </figcaption>
 </figure>
-
+<!-- TODO: Do we want/need to show a js example here too? -->
 If you are unfamiliar with Rust programming or are looking for a
 quick, no-hassle way to create windows, Tauri also supports declaring
 them in the `tauri.conf.json` file.
@@ -120,8 +122,10 @@ File tauri.conf.json
 }
 ```
 
-As you learned [previously][the webview process], Tauri does ship a
-webview but relies on the webviews provided by each operating system
+<!-- TODO: distDir above should probably be ../dist since it's the most likely one -->
+
+As you learned [previously][the webview process], Tauri does not ship
+a webview but relies on the webviews provided by each operating system
 instead. This means that not all browser APIs will be supported on all
 platforms you target, WebView2 uses an evergreen updater that always
 gives you the latest Chromium Features, while WKWebview versions are
@@ -172,9 +176,10 @@ in writing elegant cross-platform JavaScript.
    ```
 
     <figcaption>
-    
-    Listing 2-TODO: Conditional compilation in vite using `TAURI_` environment variables.
-    
+
+   Listing 2-TODO: Conditional compilation in vite using `TAURI_`
+   environment variables.
+
     </figcaption>
    </figure>
 

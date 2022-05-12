@@ -17,6 +17,8 @@ Studio C++ build tools. The easiest way is to install [Build Tools for
 Visual Studio 2019]. When asked which workloads to install, ensure
 "C++ build tools" and the Windows 10 SDK are selected.
 
+<!-- TODO: Mention that build tools need to be 2019 or above (==2019 or 2022), 2017 does not work -->
+
 ### Install WebView2
 
 > WebView2 is pre-installed in Windows 11.
@@ -120,13 +122,15 @@ sudo dnf install webkit2gtk3-devel.x86_64 \
 sudo dnf group install "C Development Tools and Libraries"
 ```
 
+<!-- TODO: this needs additional instructions for wslg on windows 11 (you basically don't need to do any of that stuff below) -->
+
 ### Windows Subsystem for Linux (WSL)
 
 To run a graphical application with WSL, you need to download one of
 these X servers: Xming, Cygwin X, and vcXsrv. Since vcXsrv has been
 used internally, it's the one we recommend installing.
 
-### WSL Version 1​
+### WSL Version 1
 
 Open the X server and then run
 

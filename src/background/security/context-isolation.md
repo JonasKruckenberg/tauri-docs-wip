@@ -1,14 +1,14 @@
 # Context Isolation
 
 Context Isolation is a way to intercept and modify Tauri API messages
-sent by the Frontend before they get to Tauri Core, all with
+sent by the frontend before they get to Tauri Core, all with
 JavaScript. The secure JavaScript code that is injected by the
 Isolation pattern is referred to as the Isolation application.
 
-This is useful to validate, sanitize, and filter messages sent to the
-front end before they even enter the Core's secure context.
+This is useful to validate, sanitize, and filter messages sent from
+the Frontend before they even enter the Core's secure context.
 
-## Why?​
+## Why?
 
 The Isolation pattern's purpose is to provide a mechanism for
 developers to help protect their application from unwanted or
@@ -20,7 +20,7 @@ that an application may see.
 
 The largest threat model described above that the Isolation pattern
 was designed in mind with was Development Threats. Not only do many
-frontend build-time tools consist of many dozen (or hundreds) of often
+Frontend build-time tools consist of many dozen (or hundreds) of often
 deeply-nested dependencies, but a complex application may also have a
 large amount of (also often deeply-nested) dependencies that are
 bundled into the final output.
@@ -33,12 +33,12 @@ the Frontend, it can _always_ be used.
 
 We highly suggest that you lock down your application whenever you use
 external Tauri APIs. As the developer, you can utilize the secure
-Isolation application to verify IPC inputs make sure they are within
-some expected parameters. For example, you may want to check that a
-call to read or write a file is not trying to get to a path outside
-your application's expected locations. <br> Another example is making
-sure that a Tauri API HTTP fetch call is only setting the Origin
-header to what your application expects it to be.
+Isolation application to verify IPC inputs are within some expected
+parameters. For example, you may want to check that a call to read or
+write a file is not trying to get to a path outside your application's
+expected locations. <br> Another example is making sure that a Tauri
+API HTTP fetch call is only setting the Origin header to what your
+application expects it to be.
 
 That said, it intercepts all messages from the Frontend, so it will
 even work with always-on APIs such as [Events]. Since some events may
@@ -47,7 +47,7 @@ techniques can be used.
 
 ## How?
 
-An Isolation Application is essentially a just JavaScript file that
+An Isolation Application is essentially just a JavaScript file that
 Tauri will run in a locked-down, isolated environment. You assign a
 callback to the `window.__TAURI_ISOLATION_HOOK__` global property that
 Tauri will invoke whenever an IPC message is about to be sent.
@@ -156,7 +156,7 @@ sequenceDiagram
     F-->>C: Send encrypted, sanitized Message
 ```
 
-<figcaption>Figure 1-4: Approximate Steps of an IPC Message​ being sent to Tauri Core with Context
+<figcaption>Figure 1-4: Approximate Steps of an IPC Message being sent to Tauri Core with Context
 Isolation enabled.</figcaption>
 </figure>
 
@@ -164,8 +164,9 @@ Isolation enabled.</figcaption>
    Application.
 2. Pass the message into the Isolation Application's hook. The Message
    object has been checked to follow the minimum correct shape.
+   <!-- TODO: something about this one is weird, idk -->
 3. The return value is used as the new Message. The Isolation
-   Application _may_ have modified Message to help sanitize input.
+   Application _may_ have modified the Message to help sanitize input.
 4. The sanitized Message is **automatically** encrypted using AES-GCM
    using a runtime-generated key and sent to the Frontend.
 5. The encrypted, sanitized message is sent to Tauri Core; which

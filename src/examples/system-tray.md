@@ -21,9 +21,9 @@ Add the following to your `tauri.conf.json` files `tauri` object:
 ```
 
 `iconPath` must point to a PNG file on macOS and Linux, and a .ico
-file must exist for Windows support. `iconAsTemplate` is a boolean
-value that determines whether the image represents a Template Image on
-macOS.
+file with the same name must exist for Windows support.
+`iconAsTemplate` is a boolean value that determines whether the image
+represents a Template Image on macOS.
 
 ## Creating a System Tray
 

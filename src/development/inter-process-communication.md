@@ -13,6 +13,8 @@ emitted for application-wide lifecycle events (e.g. update events),
 while window-specific events are, as the name suggests, emitted for
 window lifecycle events like resizing, moving, or user-defined events.
 
+<!-- TODO: -->
+
 ## Commands
 
 At its simplest, a Command is a Rust function that is invoked in
@@ -25,6 +27,7 @@ To turn a Rust function into a Command, add `#[tauri::command]` to the
 line before `fn`. This [Attribute Macro] wraps your function, handles
 JSON serialization, and injects
 [Special Paramaters](#special-parameters).
+<!-- TODO: mention invoke_handler -->
 
 <figure>
 
@@ -292,6 +295,8 @@ following example, we use a crate called [`thiserror`] to help create
 the error type. It allows you to turn enums into error types by
 deriving the `thiserror::Error` trait. You can consult its
 documentation for more details.
+
+<!-- TODO: in the codesnippet below, consider mentioning that the custom serialize implementation is not needed if the from macro isn't used (or if from is implemented manually). Maybe this would make it too complicated -->
 
 ```rust,ignore
 // create the error type that represents all errors possible in our program
