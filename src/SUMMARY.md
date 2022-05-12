@@ -10,11 +10,11 @@
   - [Vite](quick-start/vite.md)[![Draft]]()
   - [Webpack](quick-start/webpack.md)[![Draft]]()
 
-- [Background](background/README.md)[![Ready]]()
+- [Background](background/README.md)[![Migrated]]()
 
-  - [Process Model](background/process-model.md)[![Ready]]()
-  - [Inter-Process Communication](background/inter-process-communication.md)[![Ready]]()
-  - [Security](background/security/README.md)[![Ready]]()
+  - [Process Model](background/process-model.md)[![Migrated]]()
+  - [Inter-Process Communication](background/inter-process-communication.md)[![Migrated]]()
+  - [Security](background/security/README.md)[![Migrated]]()
     - [Context Isolation](background/security/context-isolation.md)[![Draft]]()
 
 - [Development]()[![Draft]]()
