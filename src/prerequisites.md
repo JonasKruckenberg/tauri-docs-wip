@@ -38,6 +38,11 @@ command:
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 
+> We have audited this bash script, and it does what it says it is
+> supposed to do. Nevertheless, before blindly curl-bashing a script,
+> it is always wise to look at it first. Here is the file as a plain
+> [download link][rustup.sh].
+
 The command downloads a script and starts the installation of the
 `rustup` tool, which installs the latest stable version of Rust. You
 might be prompted for your password. If the installation was
@@ -62,6 +67,11 @@ command:
 ```console
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
+
+> We have audited this bash script, and it does what it says it is
+> supposed to do. Nevertheless, before blindly curl-bashing a script,
+> it is always wise to look at it first. Here is the file as a plain
+> [download link][rustup.sh].
 
 The command downloads a script and starts the installation of the
 `rustup` tool, which installs the latest stable version of Rust. You
@@ -226,3 +236,4 @@ this. If your problems persist, you can get help from the official
 [github discussions]: https://github.com/tauri-apps/tauri/discussions
 [download webview2]:
   https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section
+[rustup.sh]: https://sh.rustup.rs
