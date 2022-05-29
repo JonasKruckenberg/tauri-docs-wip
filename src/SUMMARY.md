@@ -32,10 +32,10 @@
 
   - [Building your Application](building/building-your-application.md)[![Draft]]()
   - [Linux](building/linux.md)[![Draft]]()
-  - [Windows Installer](building/windows-installer.md)[![Ready]]()
-  - [macOS Bundle](building/macos-bundle.md)[![Ready]]()
+  - [Windows Installer](building/windows-installer.md)[![Migrated]]()
+  - [macOS Bundle](building/macos-bundle.md)[![Migrated]]()
   - [Updater Artifacts](building/updater-artifacts.md)[![Draft]]()
-  - [Reducing the App Size](building/reducing-the-app-size.md)[![Ready]]()
+  - [Reducing the App Size](building/reducing-the-app-size.md)[![Migrated]]()
 
 - [Distributing]()[![Draft]]()
 
