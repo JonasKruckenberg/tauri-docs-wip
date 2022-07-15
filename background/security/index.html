@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Security - The Tauri Documentation WIP</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/ferris.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><div>Draft</div></li><li class="chapter-item expanded affix "><a href="../../prerequisites.html">Prerequisites</a></li><li class="chapter-item expanded affix "><div>Migrated</div></li><li class="chapter-item expanded "><a href="../../quick-start/index.html"><strong aria-hidden="true">1.</strong> Quick Start</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../quick-start/html-css-js.html"><strong aria-hidden="true">1.1.</strong> HTML/CSS/JS</a></li><li class="chapter-item expanded "><a href="../../quick-start/vite.html"><strong aria-hidden="true">1.2.</strong> Vite</a></li><li class="chapter-item expanded "><a href="../../quick-start/webpack.html"><strong aria-hidden="true">1.3.</strong> Webpack</a></li></ol></li><li class="chapter-item expanded "><a href="../../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../background/process-model.html"><strong aria-hidden="true">2.1.</strong> Process Model</a></li><li class="chapter-item expanded "><a href="../../background/inter-process-communication.html"><strong aria-hidden="true">2.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../../background/security/index.html" class="active"><strong aria-hidden="true">2.3.</strong> Security</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../background/security/context-isolation.html"><strong aria-hidden="true">2.3.1.</strong> Context Isolation</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Development</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Configuration</div></li><li class="chapter-item expanded "><a href="../../development/inter-process-communication.html"><strong aria-hidden="true">3.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../../development/windows-and-webviews.html"><strong aria-hidden="true">3.3.</strong> Windows &amp; Webviews</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> State Management</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Tauri Plugins</div></li><li class="chapter-item expanded "><a href="../../development/debugging.html"><strong aria-hidden="true">3.6.</strong> Debugging</a></li><li class="chapter-item expanded "><a href="../../development/testing.html"><strong aria-hidden="true">3.7.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../../development/vms.html"><strong aria-hidden="true">3.8.</strong> Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Building</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../building/building-your-application.html"><strong aria-hidden="true">4.1.</strong> Building your Application</a></li><li class="chapter-item expanded "><a href="../../building/linux.html"><strong aria-hidden="true">4.2.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../../building/windows-installer.html"><strong aria-hidden="true">4.3.</strong> Windows Installer</a></li><li class="chapter-item expanded "><a href="../../building/macos-bundle.html"><strong aria-hidden="true">4.4.</strong> macOS Bundle</a></li><li class="chapter-item expanded "><a href="../../building/updater-artifacts.html"><strong aria-hidden="true">4.5.</strong> Updater Artifacts</a></li><li class="chapter-item expanded "><a href="../../building/reducing-the-app-size.html"><strong aria-hidden="true">4.6.</strong> Reducing the App Size</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Distributing</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../distributing/windows.html"><strong aria-hidden="true">5.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../../distributing/macos.html"><strong aria-hidden="true">5.2.</strong> macOS</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.3.</strong> Linux</div></li><li class="chapter-item expanded "><a href="../../distributing/updater.html"><strong aria-hidden="true">5.4.</strong> Updater</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Examples</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../examples/window-customization.html"><strong aria-hidden="true">6.1.</strong> Window Customization</a></li><li class="chapter-item expanded "><a href="../../examples/native-application-menu.html"><strong aria-hidden="true">6.2.</strong> Native Application Menu</a></li><li class="chapter-item expanded "><a href="../../examples/system-tray.html"><strong aria-hidden="true">6.3.</strong> System Tray</a></li><li class="chapter-item expanded "><a href="../../examples/sidecar.html"><strong aria-hidden="true">6.4.</strong> Sidecar</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> Notifications</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.6.</strong> Keyboard Shortcuts</div></li><li class="chapter-item expanded "><a href="../../examples/splashscreen.html"><strong aria-hidden="true">6.7.</strong> Splashscreen</a></li><li class="chapter-item expanded "><a href="../../examples/icons.html"><strong aria-hidden="true">6.8.</strong> Icons</a></li><li class="chapter-item expanded "><a href="../../examples/command-line-interface.html"><strong aria-hidden="true">6.9.</strong> Command Line Interface</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Appendix</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">7.1.</strong> A - Useful Development Tools</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.2.</strong> B - How Tauri is Made</div></li><li class="chapter-item expanded "><a href="../../appendix/version-tables.html"><strong aria-hidden="true">7.3.</strong> C - Version Tables</a></li><li class="chapter-item expanded "><a href="../../appendix/json-schemas.html"><strong aria-hidden="true">7.4.</strong> D - JSON Schemas</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Tauri Documentation WIP</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip/edit/main/src/background/security/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="security"><a class="header" href="#security">Security</a></h1>
+<p>Whether you like it or not, today's applications live in operating
+systems that can be -- and regularly are -- compromised by any number
+of attacks. When your insecure application is a gateway for such
+lateral movement into the operating system, you are contributing to
+the tools that professional hackers have at their disposal. Don't be a
+tool.</p>
+<p>This is why we have taken every opportunity to help you secure your
+application, prevent undesired access to system level interfaces, and
+manufacture bullet-proof applications. Your users assume you are
+following best practices. We make that easy, but you should still read
+up on it below.</p>
+<h2 id="security-is-a-community-responsibility"><a class="header" href="#security-is-a-community-responsibility">Security Is A Community Responsibility</a></h2>
+<p>It is important to remember that the security of your Tauri
+application is the result of the overall security of Tauri itself, all
+Rust and NPM dependencies, your code, and the devices that run the
+final application. The Tauri Team does its best to do its part, the
+security community does its part, and you too would do well to follow
+a few important best practices:</p>
+<ul>
+<li>
+<p><strong>Keep your application up-to-date.</strong> When releasing your app into
+the wild, you are also shipping a bundle that has Tauri in it.
+Vulnerabilities affecting Tauri may impact the security of your
+application. By updating Tauri to the latest version, you ensure
+that critical vulnerabilities are already patched and cannot be
+exploited in your application. Also be sure to keep your compiler
+(rustc) and transpilers (nodejs) up to date, because there are often
+security issues that are resolved.</p>
+</li>
+<li>
+<p><strong>Evaluate your dependencies.</strong> While NPM and Crates.io provide many
+convenient packages, it is your responsibility to choose trustworthy
+3rd-party libraries - or rewrite them in Rust. If you do use
+outdated libraries affected by known vulnerabilities or are
+unmaintained, your application security and good-night's sleep could
+be in jeopardy. Use tooling like npm audit and cargo audit to
+automate this process and lean on the security community's important
+work.</p>
+</li>
+<li>
+<p><strong>Adopt more secure coding practices.</strong> The first line of defense
+for your application is your own code. Although Tauri can protect
+you from common web vulnerabilities, such as Cross-Site Scripting
+based Remote Code Execution, improper configurations can have a
+security impact. Even if this were not the case, it is highly
+recommended to adopt secure software development best practices and
+perform security testing. We detail what this means in the next
+section.</p>
+</li>
+<li>
+<p><strong>Educate your Users.</strong> True security really means that unexpected
+behaviour cannot happen. So in a sense, being more secure means
+having the peace of mind in knowing that ONLY those things that you
+want to happen can happen. In the real world, though, this is a
+utopian &quot;dream&quot;. However, by removing as many vectors as possible
+and building on a solid foundation, your choice for Tauri is a
+signal to your users that you really care about them, their safety,
+and their devices.</p>
+</li>
+</ul>
+<h2 id="threat-models"><a class="header" href="#threat-models">Threat Models</a></h2>
+<p>Tauri applications are composed of many pieces at different points of
+the lifecycle. Here we describe classical threats and what you SHOULD
+do about them.</p>
+<ul>
+<li>
+<p><strong>Upstream Threats.</strong> Tauri is a direct dependency of your project,
+and we maintain strict authorial control of commits, reviews, pull
+requests, and releases. We do our best to maintain up-to-date
+dependencies and take action to either update or fork&amp;fix. Other
+projects may not be so well maintained, and may not even have ever
+been audited. Please consider their health when integrating them,
+because otherwise you may have adopted architectural debt without
+even knowing it.</p>
+</li>
+<li>
+<p><strong>Development Threats.</strong> We assume that you, the developer, care for
+your development environment like a shrine of purity because it is a
+thing of beauty. It is on you to make sure that your operating
+system, build toolchains, and associated dependencies are kept up to
+date.</p>
+<p>A genuine risk all of us face is what is known as &quot;supply-chain
+attacks&quot;, which are usually considered to be attacks on direct
+dependencies of your project. However, a growing class of attacks in
+the wild directly target development machines, and you would be
+well-off to address this head-on. <br> One practice that we highly
+recommend, is to only ever consume critical dependencies from git
+using hash revisions at best or named tags as second best. This
+holds for Rust as well as the Node ecosystem. Also, consider
+requiring all contributors to sign their commits and protect GIT
+branches and pipelines.</p>
+</li>
+<li>
+<p><strong>Buildtime Threats.</strong> Modern organisations use CI/CD to manufacture
+binary artifacts. At Tauri, we even provide a Github Workflow for
+building on multiple platforms. If you create your own CI/CD and
+depend on third-party tooling, be wary of actions whose versions you
+have not explicitly pinned. <br> You should sign your binaries for
+the platform you are shipping to, and while this can be complicated
+and somewhat costly to setup, end-users expect that your app is
+verifiably from you.</p>
+</li>
+<li>
+<p><strong>Runtime Threats.</strong> We assume the webview is insecure, which has
+led Tauri to implement several protections regarding webview access
+to system APIs in the context of loading untrusted userland content.
+<br> You can read more in detail below, but using the CSP will
+lockdown types of communication that the Webview can undertake.
+Furthermore, <a href="#context-isolation">Context Isolation</a> prevents
+untrusted content or scripts from accessing the API within the
+Webview. <br> And please, whatever you do, <strong>DO NOT</strong> trust the
+results of cryptography using private keys in the Webview. We gave
+you Rust for a reason.</p>
+</li>
+<li>
+<p><strong>Updater Threats.</strong> We have done our best to make shipping
+hot-updates to the app as straightforward and secure as possible.
+However, all bets are off if you lose control of the manifest
+server, the build server, or the binary hosting service. If you
+build your own system, consult a professional OPS architect and
+build it properly.</p>
+</li>
+</ul>
+<h2 id="secure-content-loading"><a class="header" href="#secure-content-loading">Secure content loading</a></h2>
+<p>Tauri restricts the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy</a> (CSP) of your HTML
+pages. Local scripts are hashed, styles and external scripts are
+referenced using a cryptographic nonce, which prevents unallowed
+content from being loaded.</p>
+<blockquote>
+<p>❗️ Avoid loading remote content such as scripts served over a CDN
+as they introduce an attack vector, but any untrusted file can
+introduce new and subtle attack vectors.</p>
+</blockquote>
+<p>The CSP protection is only enabled if [tauri &gt; security &gt; csp] is set
+on the Tauri configuration file. You should make it as restricted as
+possible, only allowing the webview to load assets from hosts you
+trust and preferably own. At compile time, Tauri appends its nonces
+and hashes to the relevant CSP attributes automatically, so you only
+need to worry about what is unique to your application.</p>
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src"><code>script-src</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src"><code>style-src</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources#sources">CSP Sources</a> for more
+information about this protection.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../background/inter-process-communication.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../background/security/context-isolation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../background/inter-process-communication.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../background/security/context-isolation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../theme/mermaid.min.js"></script>
+        <script type="text/javascript" src="../../theme/mermaid-init.js"></script>
+        <script type="text/javascript" src="../../theme/ferris.js"></script>
+    </body>
+</html>

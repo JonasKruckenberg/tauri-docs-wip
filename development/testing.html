@@ -1,0 +1,764 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Testing - The Tauri Documentation WIP</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/ferris.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><div>Draft</div></li><li class="chapter-item expanded affix "><a href="../prerequisites.html">Prerequisites</a></li><li class="chapter-item expanded affix "><div>Migrated</div></li><li class="chapter-item expanded "><a href="../quick-start/index.html"><strong aria-hidden="true">1.</strong> Quick Start</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../quick-start/html-css-js.html"><strong aria-hidden="true">1.1.</strong> HTML/CSS/JS</a></li><li class="chapter-item expanded "><a href="../quick-start/vite.html"><strong aria-hidden="true">1.2.</strong> Vite</a></li><li class="chapter-item expanded "><a href="../quick-start/webpack.html"><strong aria-hidden="true">1.3.</strong> Webpack</a></li></ol></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../background/process-model.html"><strong aria-hidden="true">2.1.</strong> Process Model</a></li><li class="chapter-item expanded "><a href="../background/inter-process-communication.html"><strong aria-hidden="true">2.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../background/security/index.html"><strong aria-hidden="true">2.3.</strong> Security</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../background/security/context-isolation.html"><strong aria-hidden="true">2.3.1.</strong> Context Isolation</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Development</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Configuration</div></li><li class="chapter-item expanded "><a href="../development/inter-process-communication.html"><strong aria-hidden="true">3.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../development/windows-and-webviews.html"><strong aria-hidden="true">3.3.</strong> Windows &amp; Webviews</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> State Management</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Tauri Plugins</div></li><li class="chapter-item expanded "><a href="../development/debugging.html"><strong aria-hidden="true">3.6.</strong> Debugging</a></li><li class="chapter-item expanded "><a href="../development/testing.html" class="active"><strong aria-hidden="true">3.7.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../development/vms.html"><strong aria-hidden="true">3.8.</strong> Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Building</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../building/building-your-application.html"><strong aria-hidden="true">4.1.</strong> Building your Application</a></li><li class="chapter-item expanded "><a href="../building/linux.html"><strong aria-hidden="true">4.2.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../building/windows-installer.html"><strong aria-hidden="true">4.3.</strong> Windows Installer</a></li><li class="chapter-item expanded "><a href="../building/macos-bundle.html"><strong aria-hidden="true">4.4.</strong> macOS Bundle</a></li><li class="chapter-item expanded "><a href="../building/updater-artifacts.html"><strong aria-hidden="true">4.5.</strong> Updater Artifacts</a></li><li class="chapter-item expanded "><a href="../building/reducing-the-app-size.html"><strong aria-hidden="true">4.6.</strong> Reducing the App Size</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Distributing</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../distributing/windows.html"><strong aria-hidden="true">5.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../distributing/macos.html"><strong aria-hidden="true">5.2.</strong> macOS</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.3.</strong> Linux</div></li><li class="chapter-item expanded "><a href="../distributing/updater.html"><strong aria-hidden="true">5.4.</strong> Updater</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Examples</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/window-customization.html"><strong aria-hidden="true">6.1.</strong> Window Customization</a></li><li class="chapter-item expanded "><a href="../examples/native-application-menu.html"><strong aria-hidden="true">6.2.</strong> Native Application Menu</a></li><li class="chapter-item expanded "><a href="../examples/system-tray.html"><strong aria-hidden="true">6.3.</strong> System Tray</a></li><li class="chapter-item expanded "><a href="../examples/sidecar.html"><strong aria-hidden="true">6.4.</strong> Sidecar</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> Notifications</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.6.</strong> Keyboard Shortcuts</div></li><li class="chapter-item expanded "><a href="../examples/splashscreen.html"><strong aria-hidden="true">6.7.</strong> Splashscreen</a></li><li class="chapter-item expanded "><a href="../examples/icons.html"><strong aria-hidden="true">6.8.</strong> Icons</a></li><li class="chapter-item expanded "><a href="../examples/command-line-interface.html"><strong aria-hidden="true">6.9.</strong> Command Line Interface</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Appendix</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">7.1.</strong> A - Useful Development Tools</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.2.</strong> B - How Tauri is Made</div></li><li class="chapter-item expanded "><a href="../appendix/version-tables.html"><strong aria-hidden="true">7.3.</strong> C - Version Tables</a></li><li class="chapter-item expanded "><a href="../appendix/json-schemas.html"><strong aria-hidden="true">7.4.</strong> D - JSON Schemas</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Tauri Documentation WIP</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip/edit/main/src/development/testing.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="testing"><a class="header" href="#testing">Testing</a></h1>
+<p>Automated tests are essential to ensure your application's stability,
+quality, and correctness. It's common to write Tests for libraries or
+server-side code, but many people struggle with writing automated
+tests for Graphical User Interface (GUI) applications. <br> Following
+the separation of concerns you learned about in the <a href="../understanding-tauri/process-model.html">Process Model</a>
+chapter, we recommend you set up two kinds of tests:</p>
+<ul>
+<li><strong>Unit Tests</strong> - Test frontend and Core functionality independently
+in isolated contexts.</li>
+<li><strong>End-to-End Tests</strong> (E2E) - Spiin up full instances of your app and
+simulate real user interactions to make sure individually tested
+components work well together.</li>
+</ul>
+<p>In this guide we walk you through setting up units tests for Rust and
+JavaScript, as well as End-to-End tests using <a href="https://www.w3.org/TR/webdriver/">WebDriver</a>.</p>
+<h2 id="unit-testing"><a class="header" href="#unit-testing">Unit Testing</a></h2>
+<p>Unit tests verify that individual units of source code are functioning
+as expected. This usually doesn't include UI (see
+<a href="#end-to-end-tests">End-to-end Tests</a> for that) but small chunks of
+internal logic, for example individual functions or methods.</p>
+<h3 id="rust"><a class="header" href="#rust">Rust</a></h3>
+<p>Cargo comes with a builtin test runner - <code>cargo test</code> - that will run
+unit tests and report passes and failures. The simplest test in rust
+is a function with the <code>test</code> attribute. To change a plain function
+into a test, add <code>#[test]</code> to the line before <code>fn</code>.</p>
+<p>Since it's common to write many small tests to ensure different
+expectations, Rust unit tests are commonly grouped into <em>Test
+Modules</em>:</p>
+<figure>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[cfg(test)]
+mod tests {
+    #[test]
+    fn first_test() {
+        assert_eq!(2 + 2, 4);
+    }
+
+        #[test]
+    fn second_test() {
+        assert_eq!(4 + 4, 8);
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<figcaption>A simplified Rust test suite containing two very basic tests.</figcaption>
+</figure>
+<p>The <code>#[cfg(test)]</code> attribute ensures that the module is only compiled
+when running <code>cargo test</code> but stripped when you build the binary for
+development or release. To learn more, see the <a href="https://doc.rust-lang.org/reference/conditional-compilation.html">Conditional
+Compilation</a> reference.</p>
+<p>The function body uses the <code>assert_eq!</code> macro to assert that 2 + 2
+equals 4 and 4 + 4 equals 8.</p>
+<h3 id="javascript"><a class="header" href="#javascript">JavaScript</a></h3>
+<p>Unit tests in JavaScript are more complicated, as there are many
+competing test runners: <a href="https://jestjs.io">Jest</a>, <a href="https://mochajs.org">Mocha</a>, and <a href="https://vitest.dev">Vitest</a> are popular
+choices. For the following code-snippets we will be using <a href="https://vitest.dev">Vitest</a>.</p>
+<p>Contrary to Rust, where tests co-located with the source code (i.e. in
+the same file), JavaScript tests are written in a separate file,
+commonly named <code>*.tests.js</code>.</p>
+<p>Filename: tests/main.test.ts</p>
+<figure>
+<pre><code class="language-typescript">import { expect, test } from &quot;vitest&quot;;
+import { foo } from &quot;./main&quot;;
+
+test(&quot;foo&quot;, () =&gt; {
+  const data = foo();
+  expect(data).toEqual(&quot;foo&quot;);
+});
+</code></pre>
+<figcaption>A simplified vitest test suite containing one very basic test.</figcaption>
+</figure>
+<blockquote>
+<p>As your tests are executed in an Isolated Context, you need to
+<em>mock</em> Tauri APIs. See <a href="#mocking-tauri-apis">Mocking Tauri APIs</a> for
+more details.</p>
+</blockquote>
+<p>A popular convention is to add a <code>test</code> script to your <code>package.json</code>
+file, so users immediately know how to test your application. Let's
+add a <code>test</code> script to our example application that just alises to the
+<code>vitest</code> test runner:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;test-application&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;vitest&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;vitest&quot;: &quot;0.3.5&quot;
+  }
+}
+</code></pre>
+<p>Now we can run our test suite by opening a terminal and executing the
+following command:</p>
+<p><strong>npm</strong></p>
+<pre><code class="language-console">npm test
+</code></pre>
+<pre><code class="language-console">yarn test
+</code></pre>
+<pre><code class="language-console">pnpm test
+</code></pre>
+<h2 id="end-to-end-testing"><a class="header" href="#end-to-end-testing">End-to-End Testing</a></h2>
+<p>End-to-end Tests (E2E) tests simulate a user’s step-by-step
+experience, testing the interactions between many components in the
+process.</p>
+<p><a href="https://www.w3.org/TR/webdriver/">WebDriver</a> is a standardized interface to interact with web documents
+primarily intended for automated testing. It provides capabilities for
+navigating to web pages, user input, JavaScript execution, and more.</p>
+<p>Tauri supports the <a href="https://www.w3.org/TR/webdriver/">WebDriver</a> interface by leveraging the native
+platform's <a href="https://www.w3.org/TR/webdriver/">WebDriver</a> server underneath a cross-platform wrapper
+provided by <a href="https://crates.io/crates/tauri-driver"><code>tauri-driver</code></a>.</p>
+<h3 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h3>
+<p>Install the latest tauri-driver or update an existing installation by
+running:</p>
+<pre><code class="language-console">cargo install tauri-driver
+</code></pre>
+<p>Because we currently utilize the platform's native <a href="https://www.w3.org/TR/webdriver/">WebDriver</a> server,
+there are some requirements for running <a href="https://crates.io/crates/tauri-driver"><code>tauri-driver</code></a> on supported
+platforms. Platform support is currently limited to Linux and Windows.</p>
+<h4 id="linux"><a class="header" href="#linux">Linux</a></h4>
+<p>We use <code>WebKitWebDriver</code> on Linux platforms. Check if this binary
+exists already (command <code>which WebKitWebDriver</code>) as some distributions
+bundle it with the regular WebKit package. Other platforms may have a
+separate package for them, such as <code>webkit2gtk-driver</code> on Debian-based
+distributions.</p>
+<h4 id="windows"><a class="header" href="#windows">Windows</a></h4>
+<p>Make sure to grab the version of <a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">Microsoft Edge Driver</a> that matches
+your Windows' Edge version that the application is being built and
+tested on. This should almost always be the latest stable version on
+up-to-date Windows installs. If the two versions do not match, you may
+experience your WebDriver testing suite hanging while trying to
+connect.</p>
+<p>The download contains a binary called <code>msedgedriver.exe</code>.
+<a href="https://crates.io/crates/tauri-driver"><code>tauri-driver</code></a> looks for that binary in the <code>$PATH</code> so make sure
+it's either available on the path or use the --native-driver option on
+<a href="https://crates.io/crates/tauri-driver"><code>tauri-driver</code></a>. You may want to download this automatically as part
+of the CI setup process to ensure the Edge, and Edge Driver versions
+stay in sync on Windows CI machines. A guide on how to do this may be
+added at a later date.</p>
+<h3 id="with-webdriverio"><a class="header" href="#with-webdriverio">With WebdriverIO</a></h3>
+<p><a href="https://webdriver.io/">WebdriverIO</a> (WDIO) is a test automation framework that provides a
+Node.js package for testing with WebDriver. Its ecosystem also
+includes various plugins (e.g. reporter and services) that can help
+you put together your test setup.</p>
+<h4 id="install-the-test-runner"><a class="header" href="#install-the-test-runner">Install the test runner</a></h4>
+<p>Open a terminal and run the the WebdriverIO starter toolkit in your
+project with the following command:</p>
+<p><strong>npm</strong></p>
+<pre><code class="language-console">npx wdio .
+</code></pre>
+<p><strong>yarn</strong></p>
+<pre><code class="language-console">yarn create wdio .
+</code></pre>
+<p><strong>pnpm</strong></p>
+<pre><code class="language-console">pnpm create wdio .
+</code></pre>
+<p>This installs all necessary packages for you and generates a
+<code>wdio.conf.js</code> configuration file.</p>
+<h4 id="connect-your-tauri-app"><a class="header" href="#connect-your-tauri-app">Connect your Tauri app</a></h4>
+<p>Update the <code>wdio.conf.js</code> file with the following options:</p>
+<figure>
+<pre><code class="language-javascript">// keep track of the `tauri-driver` child process
+let tauriDriver;
+
+exports.config = {
+  // ...
+  // ensure the rust project is built
+  // since we expect this binary to exist
+  // for the webdriver sessions
+  onPrepare: () =&gt; spawnSync(&quot;cargo&quot;, [&quot;build&quot;, &quot;--release&quot;]),
+
+  // ensure we are running `tauri-driver` before the session starts
+  // so that we can proxy the webdriver requests
+  beforeSession: () =&gt;
+    (tauriDriver = spawn(
+      path.resolve(os.homedir(), &quot;.cargo&quot;, &quot;bin&quot;, &quot;tauri-driver&quot;),
+      [],
+      { stdio: [null, process.stdout, process.stderr] }
+    )),
+
+  // clean up the `tauri-driver` process we spawned
+  afterSession: () =&gt; tauriDriver.kill(),
+  // ...
+};
+</code></pre>
+<figcaption>Example WebdriverIO config that launches a Tauri app before tests are run and kills the app after all tests finished.</figcaption>
+</figure>
+<h4 id="add-tests"><a class="header" href="#add-tests">Add tests</a></h4>
+<p>Let's add a test file and a couple e2e tests to show what WDIO is
+capabable of. The test runner will load these files and autimatically
+run them.</p>
+<p>Filename: test/specs/example.e2e.js</p>
+<figure>
+<pre><code class="language-javascript">// calculates the luma from a hex color `#abcdef`
+function luma(hex) {
+  if (hex.startsWith(&quot;#&quot;)) {
+    hex = hex.substring(1);
+  }
+
+  const rgb = parseInt(hex, 16);
+  const r = (rgb &gt;&gt; 16) &amp; 0xff;
+  const g = (rgb &gt;&gt; 8) &amp; 0xff;
+  const b = (rgb &gt;&gt; 0) &amp; 0xff;
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+describe(&quot;Hello Tauri&quot;, () =&gt; {
+  it(&quot;should be cordial&quot;, async () =&gt; {
+    const header = await $(&quot;body &gt; h1&quot;);
+    const text = await header.getText();
+
+    expect(text).toMatch(/^[hH]ello/);
+  });
+
+  it(&quot;should be excited&quot;, async () =&gt; {
+    const header = await $(&quot;body &gt; h1&quot;);
+    const text = await header.getText();
+
+    expect(text).toMatch(/!$/);
+  });
+
+  it(&quot;should be easy on the eyes&quot;, async () =&gt; {
+    const body = await $(&quot;body&quot;);
+    const backgroundColor = await body.getCSSProperty(
+      &quot;background-color&quot;
+    );
+
+    expect(luma(backgroundColor.parsed.hex)).toBeLessThan(100);
+  });
+});
+</code></pre>
+<figure>Listing 2-TODO: An example test suite using WebdriverIO that asserts various DOM properties.</figure>
+</figure>
+<p>The <code>luma</code> function on top is just a helper function for one of our
+tests and is not related to the actual testing of the application. If
+you are familiar with other testing frameworks, you may notice similar
+functions being exposed that are used, such as <code>describe</code>, <code>it</code>, and
+<code>expect</code>. The other APIs, such as items like <code>$</code> and its exposed
+methods, are covered by the <a href="https://webdriver.io/docs/api">WebdriverIO API docs</a>.</p>
+<h4 id="run-your-tests"><a class="header" href="#run-your-tests">Run your tests</a></h4>
+<p>To run your test suite, open a terminal and execute the following
+command:</p>
+<p><strong>npm</strong></p>
+<pre><code class="language-console">npx wdio run wdio.conf.json
+</code></pre>
+<p><strong>yarn</strong></p>
+<pre><code class="language-console">yarn wdio run wdio.conf.json
+</code></pre>
+<p><strong>pnpm</strong></p>
+<pre><code class="language-console">pnpm wdio run wdio.conf.json
+</code></pre>
+<p>You should see the following output:</p>
+<figure>
+<pre><code class="language-text">➜  webdriverio git:(main) ✗ yarn test
+yarn run v1.22.11
+$ wdio run wdio.conf.js
+
+Execution of 1 workers started at 2021-08-17T08:06:10.279Z
+
+[0-0] RUNNING in undefined - /test/specs/example.e2e.js
+[0-0] PASSED in undefined - /test/specs/example.e2e.js
+
+ &quot;spec&quot; Reporter:
+------------------------------------------------------------------
+[wry 0.12.1 linux #0-0] Running: wry (v0.12.1) on linux
+[wry 0.12.1 linux #0-0] Session ID: 81e0107b-4d38-4eed-9b10-ee80ca47bb83
+[wry 0.12.1 linux #0-0]
+[wry 0.12.1 linux #0-0] » /test/specs/example.e2e.js
+[wry 0.12.1 linux #0-0] Hello Tauri
+[wry 0.12.1 linux #0-0]    ✓ should be cordial
+[wry 0.12.1 linux #0-0]    ✓ should be excited
+[wry 0.12.1 linux #0-0]    ✓ should be easy on the eyes
+[wry 0.12.1 linux #0-0]
+[wry 0.12.1 linux #0-0] 3 passing (244ms)
+</code></pre>
+<figcaption>Listing 2-TODO: Example output from WebdriverIO showing the 3 tests from earlier passing.</figcaption>
+</figure>
+<h3 id="with-selenium"><a class="header" href="#with-selenium">With Selenium</a></h3>
+<p><a href="https://www.selenium.dev/">Selenium</a> is a web automation framework that exposes bindings to
+WebDriver APIs in many languages. Their Node.js bindings are available
+under the <code>selenium-webdriver</code> package on NPM. Unlike the <a href="https://tauri.studio/docs/testing/webdriver/example/webdriverio#config">WebdriverIO
+Test Suite</a>, Selenium does not come out of the box with a Test Suite
+and leaves it up to the developer to provide one. We chose <a href="https://mochajs.org">Mocha</a> for
+this example, since it's a popular choice.</p>
+<h4 id="install-the-test-runner-1"><a class="header" href="#install-the-test-runner-1">Install the test runner</a></h4>
+<p><strong>npm</strong></p>
+<pre><code class="language-console">npm install mocha chai selenium-webdriver
+</code></pre>
+<p><strong>yarn</strong></p>
+<pre><code class="language-console">yarn add -D mocha chai selenium-webdriver
+</code></pre>
+<p><strong>pnpm</strong></p>
+<pre><code class="language-console">pnpm add -D mocha chai selenium-webdriver
+</code></pre>
+<h4 id="connect-your-tauri-app-1"><a class="header" href="#connect-your-tauri-app-1">Connect your Tauri app</a></h4>
+<p>The following code will start an instance of your app before tests are
+run and ensure the instance is terminated afterwards. Let's add it to
+the default mocha testing file:</p>
+<p>Filename: test/test.js</p>
+<figure>
+<pre><code class="language-javascript">const os = require(&quot;os&quot;);
+const path = require(&quot;path&quot;);
+const { spawn, spawnSync } = require(&quot;child_process&quot;);
+const { Builder, By, Capabilities } = require(&quot;selenium-webdriver&quot;);
+
+// create the path to the expected application binary
+const application = path.resolve(
+  __dirname,
+  &quot;..&quot;,
+  &quot;..&quot;,
+  &quot;..&quot;,
+  &quot;target&quot;,
+  &quot;release&quot;,
+  &quot;hello-tauri-webdriver&quot;
+);
+
+// keep track of the webdriver instance we create
+let driver;
+
+// keep track of the tauri-driver process we start
+let tauriDriver;
+
+before(async function () {
+  // set timeout to 2 minutes
+  // to allow the program to build if it needs to
+  this.timeout(120000);
+
+  // ensure the program has been built
+  spawnSync(&quot;cargo&quot;, [&quot;build&quot;, &quot;--release&quot;]);
+
+  // start tauri-driver
+  tauriDriver = spawn(
+    path.resolve(os.homedir(), &quot;.cargo&quot;, &quot;bin&quot;, &quot;tauri-driver&quot;),
+    [],
+    { stdio: [null, process.stdout, process.stderr] }
+  );
+
+  const capabilities = new Capabilities();
+  capabilities.set(&quot;tauri:options&quot;, { application });
+  capabilities.setBrowserName(&quot;wry&quot;);
+
+  // start the webdriver client
+  driver = await new Builder()
+    .withCapabilities(capabilities)
+    .usingServer(&quot;http://localhost:4444/&quot;)
+    .build();
+});
+
+after(async function () {
+  // stop the webdriver session
+  await driver.quit();
+
+  // kill the tauri-driver process
+  tauriDriver.kill();
+});
+</code></pre>
+<figcaption>Listing 2-TODO: Example Selenium file that launches a Tauri app before tests are run and kills the app after all tests finished.</figcaption>
+</figure>
+<h3 id="add-tests-1"><a class="header" href="#add-tests-1">Add tests</a></h3>
+<p>Now we can add tests to the file we created earlier. We will be using
+assertion functions provided by <a href="https://www.chaijs.com">Chai</a> such as <code>expect</code> to validate
+our app works as expected.</p>
+<p>Filename: test/test.js</p>
+<figure>
+<pre><code class="language-javascript">const { expect } = require(&quot;chai&quot;);
+
+describe(&quot;Hello Tauri&quot;, () =&gt; {
+  it(&quot;should be cordial&quot;, async () =&gt; {
+    const text = await driver
+      .findElement(By.css(&quot;body &gt; h1&quot;))
+      .getText();
+
+    expect(text).to.match(/^[hH]ello/);
+  });
+
+  it(&quot;should be excited&quot;, async () =&gt; {
+    const text = await driver
+      .findElement(By.css(&quot;body &gt; h1&quot;))
+      .getText();
+
+    expect(text).to.match(/!$/);
+  });
+
+  it(&quot;should be easy on the eyes&quot;, async () =&gt; {
+    // selenium returns color css values as rgb(r, g, b)
+    const text = await driver
+      .findElement(By.css(&quot;body&quot;))
+      .getCssValue(&quot;background-color&quot;);
+
+    const rgb = text.match(
+      /^rgb\((?&lt;r&gt;\d+), (?&lt;g&gt;\d+), (?&lt;b&gt;\d+)\)$/
+    ).groups;
+
+    expect(rgb).to.have.all.keys(&quot;r&quot;, &quot;g&quot;, &quot;b&quot;);
+
+    const luma = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+    expect(luma).to.be.lessThan(100);
+  });
+});
+</code></pre>
+<figcaption>Listing 2-TODO: Example tests using Selenium and Chai to assert various DOM properties.</figcaption>
+</figure>
+<p>If you are familiar with JS testing frameworks, <code>describe</code>, <code>it</code>, and
+<code>expect</code> should look familiar. We also have semi-complex <code>before()</code>
+and <code>after()</code> callbacks to setup and teardown mocha. If you compare
+this to the <a href="#with-webdriverio">WebdriverIO example</a>, you notice a lot
+more code that isn't tests, as we have to set up a few more WebDriver
+related items.</p>
+<h3 id="run-your-tests-1"><a class="header" href="#run-your-tests-1">Run your tests</a></h3>
+<p>To run your test suite, open a terminal and execute the following
+command:</p>
+<p><strong>npm</strong></p>
+<pre><code class="language-console">npx mocha
+</code></pre>
+<p><strong>yarn</strong></p>
+<pre><code class="language-console">yarn mocha
+</code></pre>
+<p><strong>pnpm</strong></p>
+<pre><code class="language-console">pnpm mocha
+</code></pre>
+<p>We should see output the following output:</p>
+<figure>
+<pre><code class="language-text">➜  selenium git:(main) ✗ yarn test
+yarn run v1.22.11
+$ Mocha
+
+
+  Hello Tauri
+    ✔ should be cordial (120ms)
+    ✔ should be excited
+    ✔ should be easy on the eyes
+
+
+  3 passing (588ms)
+
+Done in 0.93s.
+</code></pre>
+<figcaption>Listing 2-TODO: Output from Selenium showing the 3 earlier tests passing.</figcaption>
+</figure>
+<h2 id="mocking-tauri-apis"><a class="header" href="#mocking-tauri-apis">Mocking Tauri APIs</a></h2>
+<p>When writing your frontend tests, having a &quot;fake&quot; Tauri environment to
+simulate windows or intercept IPC calls is common, so-called
+<em>mocking</em>. The <a href="../api/js/modules/mocks.html"><code>@tauri-apps/api/mocks</code></a> module provides some helpful
+tools to make this easier for you:</p>
+<blockquote>
+<p>Remember to clear mocks after each test run to undo mock state
+changes between runs! See <a href="../api/js/modules/mocks.html#clearmocks"><code>clearMocks()</code></a> docs for more info.</p>
+</blockquote>
+<h3 id="ipc-requests"><a class="header" href="#ipc-requests">IPC Requests</a></h3>
+<p>Most commonly, you want to intercept IPC requests; this can be helpful
+in a variety of situations:</p>
+<ul>
+<li>Ensure the correct backend calls are made</li>
+<li>Simulate different results from backend functions</li>
+</ul>
+<p>Tauri provides the mockIPC function to intercept IPC requests. You can
+find more about the specific API in detail <a href="../api/js/modules/mocks.html#mockipc">here</a>.</p>
+<blockquote>
+<p>The following examples use <a href="https://vitest.dev">Vitest</a>, but you can use any other
+frontend testing library such as jest.</p>
+</blockquote>
+<figure>
+<pre><code class="language-javascript">import { beforeAll, expect, test } from &quot;vitest&quot;;
+import { randomFillSync } from &quot;crypto&quot;;
+
+import { mockIPC } from &quot;@tauri-apps/api/mocks&quot;;
+import { invoke } from &quot;@tauri-apps/api/tauri&quot;;
+
+// jsdom doesn't come with a WebCrypto implementation
+beforeAll(() =&gt; {
+  window.crypto = {
+    getRandomValues: function (buffer) {
+      return randomFillSync(buffer);
+    },
+  };
+});
+
+test(&quot;invoke simple&quot;, async () =&gt; {
+  mockIPC((cmd, args) =&gt; {
+    // simulate rust command called &quot;add&quot;
+    if (cmd === &quot;add&quot;) {
+      return args.a + args.b;
+    }
+  });
+
+  expect(invoke(&quot;add&quot;, { a: 12, b: 15 })).resolves.toBe(27);
+});
+</code></pre>
+<figcaption>Listing 2-TODO: Vitest test file showing a mocked command handler that simulates a simple add function.</figcaption>
+</figure>
+<p>Sometimes you want to track more information about an IPC call; how
+many times was the command invoked? Was it invoked at all? You can use
+<a href="../api/js/modules/mocks.html#mockipc"><code>mockIPC()</code></a> with other spying and mocking tools to test this:</p>
+<figure>
+<pre><code class="language-javascript">import { beforeAll, expect, test, vi } from &quot;vitest&quot;;
+import { randomFillSync } from &quot;crypto&quot;;
+
+import { mockIPC } from &quot;@tauri-apps/api/mocks&quot;;
+import { invoke } from &quot;@tauri-apps/api/tauri&quot;;
+
+// jsdom doesn't come with a WebCrypto implementation
+beforeAll(() =&gt; {
+  //@ts-ignore
+  window.crypto = {
+    getRandomValues: function (buffer) {
+      return randomFillSync(buffer);
+    },
+  };
+});
+
+test(&quot;invoke&quot;, async () =&gt; {
+  mockIPC((cmd, args) =&gt; {
+    // simulate rust command called &quot;add&quot;
+    if (cmd === &quot;add&quot;) {
+      return args.a + args.b;
+    }
+  });
+
+  // we can use the spying tools provided by vitest
+  // to track the mocked function
+  const spy = vi.spyOn(window, &quot;__TAURI_IPC__&quot;);
+
+  expect(invoke(&quot;add&quot;, { a: 12, b: 15 })).resolves.toBe(27);
+  expect(spy).toHaveBeenCalled();
+});
+</code></pre>
+<figcaption>
+<p>Listing 2-TODO: The mocked <code>__TAURI_IPC__</code> is compatible with existing
+testing tools.</p>
+</figcaption>
+</figure>
+<h3 id="windows-1"><a class="header" href="#windows-1">Windows</a></h3>
+<p>Sometimes you have window-specific code (a splash screen window, for
+example), so you need to simulate different windows. You can use the
+<a href="../api/js/modules/mocks.html#mockwindows"><code>mockWindows()</code></a> method to create fake window labels. The first
+string identifies the &quot;current&quot; window (i.e., the window your
+JavaScript believes itself in), and all other strings are treated as
+additional windows.</p>
+<blockquote>
+<p><a href="../api/js/modules/mocks.html#mockwindows"><code>mockWindows()</code></a> only fakes the existence of windows but no window
+properties. To simulate window properties, you need to intercept the
+correct calls using <a href="../api/js/modules/mocks.html#mockipc"><code>mockIPC()</code></a></p>
+</blockquote>
+<figure>
+<pre><code class="language-javascript">import { beforeAll, expect, test } from &quot;vitest&quot;;
+import { randomFillSync } from &quot;crypto&quot;;
+
+import { mockWindows } from &quot;@tauri-apps/api/mocks&quot;;
+
+// jsdom doesn't come with a WebCrypto implementation
+beforeAll(() =&gt; {
+  //@ts-ignore
+  window.crypto = {
+    getRandomValues: function (buffer) {
+      return randomFillSync(buffer);
+    },
+  };
+});
+
+test(&quot;invoke&quot;, async () =&gt; {
+  mockWindows(&quot;main&quot;, &quot;second&quot;, &quot;third&quot;);
+
+  const { getCurrent, getAll } = await import(
+    &quot;@tauri-apps/api/window&quot;
+  );
+
+  expect(getCurrent()).toHaveProperty(&quot;label&quot;, &quot;main&quot;);
+  expect(getAll().map((w) =&gt; w.label)).toEqual([
+    &quot;main&quot;,
+    &quot;second&quot;,
+    &quot;third&quot;,
+  ]);
+});
+</code></pre>
+<figcaption>Listing 2-TODO: A vitest test file with 3 mocked windows.</figcaption>
+</figure>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../development/debugging.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../development/vms.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../development/debugging.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../development/vms.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/mermaid-init.js"></script>
+        <script type="text/javascript" src="../theme/ferris.js"></script>
+    </body>
+</html>

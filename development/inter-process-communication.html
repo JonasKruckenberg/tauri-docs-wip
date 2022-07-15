@@ -1,0 +1,506 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Inter-Process Communication - The Tauri Documentation WIP</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/ferris.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><div>Draft</div></li><li class="chapter-item expanded affix "><a href="../prerequisites.html">Prerequisites</a></li><li class="chapter-item expanded affix "><div>Migrated</div></li><li class="chapter-item expanded "><a href="../quick-start/index.html"><strong aria-hidden="true">1.</strong> Quick Start</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../quick-start/html-css-js.html"><strong aria-hidden="true">1.1.</strong> HTML/CSS/JS</a></li><li class="chapter-item expanded "><a href="../quick-start/vite.html"><strong aria-hidden="true">1.2.</strong> Vite</a></li><li class="chapter-item expanded "><a href="../quick-start/webpack.html"><strong aria-hidden="true">1.3.</strong> Webpack</a></li></ol></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../background/process-model.html"><strong aria-hidden="true">2.1.</strong> Process Model</a></li><li class="chapter-item expanded "><a href="../background/inter-process-communication.html"><strong aria-hidden="true">2.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../background/security/index.html"><strong aria-hidden="true">2.3.</strong> Security</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../background/security/context-isolation.html"><strong aria-hidden="true">2.3.1.</strong> Context Isolation</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Development</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Configuration</div></li><li class="chapter-item expanded "><a href="../development/inter-process-communication.html" class="active"><strong aria-hidden="true">3.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../development/windows-and-webviews.html"><strong aria-hidden="true">3.3.</strong> Windows &amp; Webviews</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> State Management</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Tauri Plugins</div></li><li class="chapter-item expanded "><a href="../development/debugging.html"><strong aria-hidden="true">3.6.</strong> Debugging</a></li><li class="chapter-item expanded "><a href="../development/testing.html"><strong aria-hidden="true">3.7.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../development/vms.html"><strong aria-hidden="true">3.8.</strong> Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Building</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../building/building-your-application.html"><strong aria-hidden="true">4.1.</strong> Building your Application</a></li><li class="chapter-item expanded "><a href="../building/linux.html"><strong aria-hidden="true">4.2.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../building/windows-installer.html"><strong aria-hidden="true">4.3.</strong> Windows Installer</a></li><li class="chapter-item expanded "><a href="../building/macos-bundle.html"><strong aria-hidden="true">4.4.</strong> macOS Bundle</a></li><li class="chapter-item expanded "><a href="../building/updater-artifacts.html"><strong aria-hidden="true">4.5.</strong> Updater Artifacts</a></li><li class="chapter-item expanded "><a href="../building/reducing-the-app-size.html"><strong aria-hidden="true">4.6.</strong> Reducing the App Size</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Distributing</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../distributing/windows.html"><strong aria-hidden="true">5.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../distributing/macos.html"><strong aria-hidden="true">5.2.</strong> macOS</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.3.</strong> Linux</div></li><li class="chapter-item expanded "><a href="../distributing/updater.html"><strong aria-hidden="true">5.4.</strong> Updater</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Examples</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/window-customization.html"><strong aria-hidden="true">6.1.</strong> Window Customization</a></li><li class="chapter-item expanded "><a href="../examples/native-application-menu.html"><strong aria-hidden="true">6.2.</strong> Native Application Menu</a></li><li class="chapter-item expanded "><a href="../examples/system-tray.html"><strong aria-hidden="true">6.3.</strong> System Tray</a></li><li class="chapter-item expanded "><a href="../examples/sidecar.html"><strong aria-hidden="true">6.4.</strong> Sidecar</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> Notifications</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.6.</strong> Keyboard Shortcuts</div></li><li class="chapter-item expanded "><a href="../examples/splashscreen.html"><strong aria-hidden="true">6.7.</strong> Splashscreen</a></li><li class="chapter-item expanded "><a href="../examples/icons.html"><strong aria-hidden="true">6.8.</strong> Icons</a></li><li class="chapter-item expanded "><a href="../examples/command-line-interface.html"><strong aria-hidden="true">6.9.</strong> Command Line Interface</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Appendix</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">7.1.</strong> A - Useful Development Tools</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.2.</strong> B - How Tauri is Made</div></li><li class="chapter-item expanded "><a href="../appendix/version-tables.html"><strong aria-hidden="true">7.3.</strong> C - Version Tables</a></li><li class="chapter-item expanded "><a href="../appendix/json-schemas.html"><strong aria-hidden="true">7.4.</strong> D - JSON Schemas</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Tauri Documentation WIP</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip/edit/main/src/development/inter-process-communication.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="inter-process-communication"><a class="header" href="#inter-process-communication">Inter-Process Communication</a></h1>
+<p>We established the general concepts and ideas behind IPC in
+<a href="../understanding-tauri/inter-process-communication.html">Background: Inter-Process Communication</a>. This guide teaches you how
+to put that theory to practice and interact with the IPC system from
+both JavaScript and Rust.</p>
+<h2 id="events"><a class="header" href="#events">Events</a></h2>
+<p>Events are one-way IPC messages and come in two distinct flavors:
+<em>Global Events</em> and <em>Window-specific Events</em>. Global events are
+emitted for application-wide lifecycle events (e.g. update events),
+while window-specific events are, as the name suggests, emitted for
+window lifecycle events like resizing, moving, or user-defined events.</p>
+<h2 id="commands"><a class="header" href="#commands">Commands</a></h2>
+<p>At its simplest, a Command is a Rust function that is invoked in
+response to an incoming IPC request. This function has access to the
+application state, windows, may take input parameters, and returns
+data. You can think of them almost like [Serverless Functions] that
+live in the Tauri Core process and communicate over IPC.</p>
+<p>To turn a Rust function into a Command, add <code>#[tauri::command]</code> to the
+line before <code>fn</code>. This <a href="https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros">Attribute Macro</a> wraps your function, handles
+JSON serialization, and injects
+<a href="#special-parameters">Special Paramaters</a>.</p>
+<figure>
+<pre><code class="language-rust ignore">#[tauri::command]
+fn my_custom_command() {
+  println!(&quot;Hello, world!&quot;);
+}
+</code></pre>
+<figcaption>
+<p>Listing 2-TODO: A regular Rust function turned into a Command by the
+<code>tauri::command</code> macro.</p>
+</figcaption>
+</figure>
+<p>You can use the <code>invoke()</code> function provided by the <code>@tauri-apps/api</code>
+package to call Commands from the Frontend. The function requires the
+Command name and optional parameters and returns a promise that
+resolves when the Command finished executing:</p>
+<figure>
+<pre><code class="language-javascript">import { invoke } from &quot;@tauri-apps/api&quot;;
+
+await invoke(&quot;my_custom_command&quot;);
+</code></pre>
+<figcaption>Listing 2-TODO: A command invocation without parameters.</figcaption>
+</figure>
+<!-- TODO: register command handler -->
+<h3 id="parameters"><a class="header" href="#parameters">Parameters</a></h3>
+<p>Commands can have parameters, which are defined like regular Rust
+function parameters. Tauri will reject IPC requests for a command if
+the argument number, types, or names are invalid.</p>
+<p>All parameters must implement <code>serde::Deserialize</code> so the
+<code>tauri::command</code> macro can correctly parse the incoming IPC request.
+Standard types such as <code>u8</code>, <code>String</code> or <code>bool</code> are deserializable by
+default, but you have to <a href="https://serde.rs/derive.html">derive</a> or <a href="https://serde.rs/impl-deserialize.html">manually
+implement</a> <code>serde::Deserialize</code> for
+types you defined yourself.</p>
+<figure>
+<pre><code class="language-rust ignore">#[tauri::command]
+fn my_command(msg: String) {
+    println!(&quot;I was invoked with this message: {}&quot;, msg);
+}
+</code></pre>
+<figcaption>Listing 2-TODO: Simple command accepting only a single parameter.</figcaption>
+</figure>
+<h4 id="special-parameters"><a class="header" href="#special-parameters">Special Parameters</a></h4>
+<p>Commands that only have access to the parameters passed from the
+Frontend aren't too helpful, so the <code>tauri::command</code> macro has a
+couple of tricks up its sleeve. If you specify any of the following
+types as parameters to your function, they will be <em>automagically</em>
+injected by the macro.</p>
+<ul>
+<li><a href="https://docs.rs/tauri/*/tauri/struct.Window.html"><code>tauri::Window</code></a> - A handle to the window that invoked the Command.</li>
+<li><a href="https://docs.rs/tauri/*/tauri/struct.AppHandle.html"><code>tauri::AppHandle</code></a> - A handle to the global <code>App</code> instance.</li>
+<li><a href="https://docs.rs/tauri/*/tauri/struct.State.html"><code>tauri::State&lt;T&gt;</code></a> - Tries to inject globally
+managed state <code>T</code>. This requires that you previously called
+<a href="https://docs.rs/tauri/*/tauri/trait.Manager.html#method.manage"><code>manage(T)</code></a>.</li>
+</ul>
+<p>The <code>tauri::command</code> macro strips Special Parameters from the function
+signature, so they are <em>invisible</em> to the Frontend as Listing 2-TODO
+shows.</p>
+<figure>
+<pre><code class="language-rust ignore">#[tauri::command]
+fn my_command(window: tauri::Window, _app_handle: tauri::AppHandle) {
+    println!(&quot;I was invoked from window: {}&quot;, window.label());
+}
+</code></pre>
+<pre><code class="language-javascript">invoke(&quot;my_command&quot;);
+</code></pre>
+<figcaption>Listing 2-TODO: Special Parameters are invisible to the Frontend.</figcaption>
+</figure>
+<p>You can instruct the macro to inject globally managed state by using
+the <a href="https://docs.rs/tauri/*/tauri/struct.State.html"><code>tauri::State</code></a> type. This only works with types that you
+previously stored in the globaly state with <a href="https://docs.rs/tauri/*/tauri/trait.Manager.html#method.manage"><code>manage()</code></a>, see the
+<a href="state-management.html">State Management</a> guide for more details.</p>
+<figure>
+<pre><code class="language-rust ignore">struct DBConnection(Option&lt;DBClient&gt;);
+
+#[tauri::command]
+fn is_connected(connection: State&lt;'_, DBConnection&gt;) -&gt; bool {
+    // return true if `connection` holds a `DBClient`
+    connection.0.is_some()
+}
+
+fn main() {
+    tauri::Builder::default()
+        .invoke_handler(tauri::generate_handler![is_connected])
+        .setup(|app| {
+            app.manage(DBConnection(None));
+
+            Ok(())
+        })
+        .run()
+        .expect(&quot;failed to run app&quot;);
+}
+</code></pre>
+<figcaption>
+<p>Listing 2-TODO: Using <code>State</code> to inject global application state in
+commands.</p>
+</figcaption>
+</figure>
+<blockquote>
+<p><strong>Note</strong>: It's an informal convention that you put Special
+Parameters before any regular Parameters.</p>
+</blockquote>
+<h3 id="commands-with-return-values"><a class="header" href="#commands-with-return-values">Commands with Return Values</a></h3>
+<p>Commands can return values to the Frontend, exactly like regular Rust
+functions, with one caveat: Return values must be representable as
+JSON. In Rust we say that the type needs to implement
+<code>serde::Serialize</code>.</p>
+<p>Most standard types such as <code>u8</code>, <code>String</code> or <code>bool</code> already implement
+<code>serde::Serialize</code> by default and even more complex types such as
+<code>HashMap&lt;K,V&gt;</code> can be serialized as long as both generic types
+implement <code>serde::Serialize</code>. For types that you defined yourself you
+need to either <a href="https://serde.rs/derive.html">derive the trait</a> or <a href="https://serde.rs/impl-serialize.html">implement
+it manually</a>.</p>
+<figure>
+<pre><code class="language-rust ignore">#[tauri::command]
+fn simple_command() -&gt; String {
+  &quot;Hello from Rust!&quot;.into()
+}
+
+#[derive(serde::Serialize)]
+struct Data {
+  some_key: String,
+  some_other_key: bool,
+  more_complex_value: HashMap&lt;String, DataInner&gt;
+}
+
+#[derive(serde::Serialize)]
+struct DataInner(Vec&lt;u8&gt;);
+
+#[tauri::command]
+fn complex_command() -&gt; Data {
+  let mut map = HashMap::default();
+
+  map.insert(&quot;first&quot;, DataInner(vec![1,2,3,4]));
+
+  Data {
+    some_key: &quot;foobar&quot;.to_string(),
+    some_other_key: true,
+    more_complex_value: map,
+  }
+}
+</code></pre>
+<pre><code class="language-javascript">const msg = invoke(&quot;simple_command&quot;);
+
+// prints &quot;Hello from Rust!&quot;
+console.log(msg.payload);
+
+const data = invoke(&quot;complex_command&quot;);
+
+// prints the following:
+// {
+//  some_key: &quot;foobar&quot;,
+//  some_other_key: true,
+//  more_complex_value: {
+//      first: [1,2,3,4]
+//  }
+// }
+console.log(data.payload);
+</code></pre>
+<figcaption>
+<p>Listing 2-TODO: Simple and complex command return values, showing how
+<code>derive(Serde::Serialize)</code> can be used to return user-defined types.</p>
+</figcaption>
+</figure>
+<h3 id="error-handling"><a class="header" href="#error-handling">Error handling</a></h3>
+<p>Rust has a standard way to represent failures in functions: The
+<a href="https://doc.rust-lang.org/std/result/enum.Result.html"><code>Result&lt;T, E&gt;</code></a> type. It is an enum with two variants, <code>Ok(T)</code>,
+representing success, and <code>Err(E)</code>, representing error.</p>
+<p>As you learned earlier Command invocations are represented by a
+JavaScript promise. By returning a Result from your Command you can
+directly influence the state of that promise: Returning <code>Ok(T)</code>
+resolves the promise with the given <code>T</code>, while returning <code>Err</code> rejects
+the promise with <code>E</code> as the error.</p>
+<figure>
+<pre><code class="language-rust ignore">#[tauri::command]
+fn failing_command() -&gt; Result&lt;String, String&gt; {
+  Err(&quot;oops!&quot;.to_string())
+}
+</code></pre>
+<figcaption>Listing 2-TODO: A Command that always fails.</figcaption>
+</figure>
+<p>If you try this using real-world functions, however, you quickly run
+into a problem: No error type implements <code>serde::Serialize</code>!</p>
+<figure>
+<pre><code class="language-rust ignore compile_fail">use std::fs::File;
+use std::io;
+use std::io::Read;
+
+#[tauri::command]
+fn read_file() -&gt; Result&lt;String, io::Error&gt; {
+    let mut f = File::open(&quot;hello.txt&quot;)?;
+    let mut s = String::new();
+    f.read_to_string(&amp;mut s)?;
+
+    Ok(s)
+}
+</code></pre>
+<figcaption>
+<p>Listing 2-TODO: This code does not compile because <code>std::io::Error</code> is
+not serializable.</p>
+</figcaption>
+</figure>
+<p>You could just use an error type, for example, <code>String</code> like we did in
+Listing-TODO, but that is not very <em>idiomatic</em>. Instead, we create a
+custom error type that implements <code>serde::Serialize</code>. <br> In the
+following example, we use a crate called <a href="https://docs.rs/thiserror/latest/thiserror/"><code>thiserror</code></a> to help create
+the error type. It allows you to turn enums into error types by
+deriving the <code>thiserror::Error</code> trait. You can consult its
+documentation for more details.</p>
+<pre><code class="language-rust ignore">// create the error type that represents all errors possible in our program
+#[derive(Debug, thiserror::Error)]
+enum Error {
+  #[error(transparent)]
+  Io(#[from] std::io::Error)
+}
+
+// we must manually implement serde::Serialize
+impl serde::Serialize for Error {
+  fn serialize&lt;S&gt;(&amp;self, serializer: S) -&gt; Result&lt;S::Ok, S::Error&gt;
+  where
+    S: serde::ser::Serializer,
+  {
+    serializer.serialize_str(self.to_string().as_ref())
+  }
+}
+</code></pre>
+<p>A custom error type has the advantage of making all possible errors
+explicit so readers can quickly identify what errors can happen. This
+saves other people (and yourself) enormous amounts of time when
+reviewing and refactoring code later. <br> It also gives you full
+control over the way your error type gets serialized. In the above
+example, we simply returned the error message as a string, but you
+could assign each error a code similar to C.</p>
+<h3 id="async-commands"><a class="header" href="#async-commands">Async Commands</a></h3>
+<p>If your Command spends time waiting for IO - maybe it is reading a
+file or connecting to a server - it blocks the main process for that
+duration. This means the window becomes unresponsive, and your app
+<em>freezes</em>. To avoid this problem Rust has builtin support
+<em>asynchronous functions</em> through <a href="https://rust-lang.github.io/async-book/02_execution/02_future.html">the <code>Future</code> Trait</a>. A familiar
+concept if you already know about <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> and <code>async/await</code> in
+JavaScript.</p>
+<p>You declare an asynchronous command by writing <code>async fn</code> instead of
+<code>fn</code>:</p>
+<pre><code class="language-rust ignore">#[tauri::command]
+async fn async_command() {}
+</code></pre>
+<p>Async Commands are executed on a thread pool using
+<a href="https://docs.rs/tauri/*/tauri/async_runtime/fn.spawn.html"><code>tauri::async_runtime::spawn()</code></a>, so long-running tasks no longer
+block the Core's main thread. Because Commands map to JavaScript
+promises in the Frontend, they also don't block the Frontend's main
+thread.</p>
+<blockquote>
+<p>To execute <em>non-async</em>, regular Commands on a different thread,
+define the macro like so: <code>#[tauri::command(async)]</code>.</p>
+</blockquote>
+<p>Listing-TODO shows a more complete example that uses the non-blocking
+<code>tokio::fs::read()</code> function to read a file from disk, convert it to a
+Utf8 string and parse it into a Vec of lines. It also uses the
+previously introduced <code>thiserror</code> and <code>serde::Serialize</code> to create a
+custom Error type.</p>
+<figure>
+<pre><code class="language-rust ignore">use std::path::PathBuf;
+
+// A custom error type that represents all possible in our command
+#[derive(Debug, thiserror::Error)]
+enum Error {
+    #[error(&quot;Failed to read file: {0}&quot;)]
+    Io(#[from] std::io::Error),
+    #[error(&quot;File is not valid utf8: {0}&quot;)]
+    Utf8(#[from] std::string::FromUtf8Error),
+}
+
+// we must also implement serde::Serialize
+impl serde::Serialize for Error {
+  fn serialize&lt;S&gt;(&amp;self, serializer: S) -&gt; Result&lt;S::Ok, S::Error&gt;
+  where
+    S: serde::ser::Serializer,
+  {
+    serializer.serialize_str(self.to_string().as_ref())
+  }
+}
+
+async fn async_read_lines(path: PathBuf) -&gt; Result&lt;Vec&lt;String&gt;, Error&gt; {
+    // read bytes a non-blocking way
+    let bytes = tokio::fs::read(path).await?;
+
+    // convert bytes into utf8 string
+    let string = String::from_utf8(bytes)?;
+
+    // splitting at newline characters
+    let lines = string
+        .split('\n')
+        .map(|line| line.to_string())
+        .collect::&lt;Vec&lt;_&gt;&gt;();
+
+    Ok(lines)
+}
+</code></pre>
+<figcaption>Listing 2-TODO: A more complete examples that uses non-blocking APIs to read a file into a Vec of lines.</figcaption>
+</figure>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../background/security/context-isolation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../development/windows-and-webviews.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../background/security/context-isolation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../development/windows-and-webviews.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/mermaid-init.js"></script>
+        <script type="text/javascript" src="../theme/ferris.js"></script>
+    </body>
+</html>

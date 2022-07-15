@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Windows - The Tauri Documentation WIP</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/ferris.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><div>Draft</div></li><li class="chapter-item expanded affix "><a href="../prerequisites.html">Prerequisites</a></li><li class="chapter-item expanded affix "><div>Migrated</div></li><li class="chapter-item expanded "><a href="../quick-start/index.html"><strong aria-hidden="true">1.</strong> Quick Start</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../quick-start/html-css-js.html"><strong aria-hidden="true">1.1.</strong> HTML/CSS/JS</a></li><li class="chapter-item expanded "><a href="../quick-start/vite.html"><strong aria-hidden="true">1.2.</strong> Vite</a></li><li class="chapter-item expanded "><a href="../quick-start/webpack.html"><strong aria-hidden="true">1.3.</strong> Webpack</a></li></ol></li><li class="chapter-item expanded "><a href="../background/index.html"><strong aria-hidden="true">2.</strong> Background</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../background/process-model.html"><strong aria-hidden="true">2.1.</strong> Process Model</a></li><li class="chapter-item expanded "><a href="../background/inter-process-communication.html"><strong aria-hidden="true">2.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../background/security/index.html"><strong aria-hidden="true">2.3.</strong> Security</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../background/security/context-isolation.html"><strong aria-hidden="true">2.3.1.</strong> Context Isolation</a></li></ol></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Development</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Configuration</div></li><li class="chapter-item expanded "><a href="../development/inter-process-communication.html"><strong aria-hidden="true">3.2.</strong> Inter-Process Communication</a></li><li class="chapter-item expanded "><a href="../development/windows-and-webviews.html"><strong aria-hidden="true">3.3.</strong> Windows &amp; Webviews</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.4.</strong> State Management</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Tauri Plugins</div></li><li class="chapter-item expanded "><a href="../development/debugging.html"><strong aria-hidden="true">3.6.</strong> Debugging</a></li><li class="chapter-item expanded "><a href="../development/testing.html"><strong aria-hidden="true">3.7.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../development/vms.html"><strong aria-hidden="true">3.8.</strong> Virtual Machines</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Building</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../building/building-your-application.html"><strong aria-hidden="true">4.1.</strong> Building your Application</a></li><li class="chapter-item expanded "><a href="../building/linux.html"><strong aria-hidden="true">4.2.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../building/windows-installer.html"><strong aria-hidden="true">4.3.</strong> Windows Installer</a></li><li class="chapter-item expanded "><a href="../building/macos-bundle.html"><strong aria-hidden="true">4.4.</strong> macOS Bundle</a></li><li class="chapter-item expanded "><a href="../building/updater-artifacts.html"><strong aria-hidden="true">4.5.</strong> Updater Artifacts</a></li><li class="chapter-item expanded "><a href="../building/reducing-the-app-size.html"><strong aria-hidden="true">4.6.</strong> Reducing the App Size</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Distributing</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../distributing/windows.html" class="active"><strong aria-hidden="true">5.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../distributing/macos.html"><strong aria-hidden="true">5.2.</strong> macOS</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.3.</strong> Linux</div></li><li class="chapter-item expanded "><a href="../distributing/updater.html"><strong aria-hidden="true">5.4.</strong> Updater</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Examples</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/window-customization.html"><strong aria-hidden="true">6.1.</strong> Window Customization</a></li><li class="chapter-item expanded "><a href="../examples/native-application-menu.html"><strong aria-hidden="true">6.2.</strong> Native Application Menu</a></li><li class="chapter-item expanded "><a href="../examples/system-tray.html"><strong aria-hidden="true">6.3.</strong> System Tray</a></li><li class="chapter-item expanded "><a href="../examples/sidecar.html"><strong aria-hidden="true">6.4.</strong> Sidecar</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> Notifications</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.6.</strong> Keyboard Shortcuts</div></li><li class="chapter-item expanded "><a href="../examples/splashscreen.html"><strong aria-hidden="true">6.7.</strong> Splashscreen</a></li><li class="chapter-item expanded "><a href="../examples/icons.html"><strong aria-hidden="true">6.8.</strong> Icons</a></li><li class="chapter-item expanded "><a href="../examples/command-line-interface.html"><strong aria-hidden="true">6.9.</strong> Command Line Interface</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Appendix</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">7.1.</strong> A - Useful Development Tools</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.2.</strong> B - How Tauri is Made</div></li><li class="chapter-item expanded "><a href="../appendix/version-tables.html"><strong aria-hidden="true">7.3.</strong> C - Version Tables</a></li><li class="chapter-item expanded "><a href="../appendix/json-schemas.html"><strong aria-hidden="true">7.4.</strong> D - JSON Schemas</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Tauri Documentation WIP</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/JonasKruckenberg/tauri-docs-wip/edit/main/src/distributing/windows.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="windows-application-distribution"><a class="header" href="#windows-application-distribution">Windows Application Distribution</a></h1>
+<p>This guide provides information on code signing and uploading your app
+to the Windows Store.</p>
+<h2 id="code-signing"><a class="header" href="#code-signing">Code Signing</a></h2>
+<p>Code signing your application lets users know that they downloaded the
+official executable of your app and not some malware that poses as
+your app. While it is not required, it improves users' confidence in
+your app.</p>
+<p>The following list walks you through the necessary steps to code-sign
+a Windows application.</p>
+<ol start="0">
+<li>
+<p><strong>Prerequisites</strong></p>
+<p>This guide assumes you run Windows, either on a physical machine or
+a <a href="../development/vms.html">Virtual Machine</a> and that you already have a working Tauri
+application.</p>
+</li>
+<li>
+<p><strong>Get a Code Signing Certificate</strong></p>
+<p>To sign your application, you need to acquire a <strong>Code Signing
+certificate</strong> from one of the <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/dashboard/get-a-code-signing-certificate#extended-validation-code-signing-certificates">supported certificate authorities</a>
+like Digicert, Sectigo (formerly Comodo), or Godaddy.</p>
+<p>To eliminate all security prompts during installation, you need an
+extended validation (EV) code signing certificate. These
+certificates cost upwards of 400$ and require a hardware token.
+Depending on your country, they might also be sold to companies
+only.</p>
+</li>
+<li>
+<p><strong>Create <code>.pfx</code> Certificate</strong></p>
+<p>You need a <a href="https://en.wikipedia.org/wiki/PKCS_12">PKCS 12</a> Certificate file to sign an executable,
+commonly called a PFX file. We will take the certificate file (e.g.
+<code>cert.cer</code>) and private key (e.g. <code>private-key.key</code>) you received
+from your certificate authority and convert them into a <code>.pfx</code>
+file. <br> Open a PowerShell prompt and enter the following
+command:</p>
+<pre><code class="language-powershell">openssl pkcs12 -export -in cert.cer -inkey private-key.key -out certificate.pfx
+</code></pre>
+<p>Make sure you don't forget the export password when prompted, we
+need it in the next step.</p>
+</li>
+<li>
+<p><strong>Import Certificate</strong></p>
+<p>You now need to import your newly created <code>.pfx</code> certificate into
+the Windows Keystore. First, we need to store the export password
+you previously created into an environment variable. The securest
+option is the <code>Get-Credential</code> helper; Enter the following command
+in your PowerShell prompt:</p>
+<pre><code class="language-powershell">$mypwd = Get-Credential `
+         -UserName 'Enter password below' `
+         -Message 'Enter password below'
+</code></pre>
+<p>Next, you can use the <code>Import-PfxCertificate</code> command to actually
+import your <code>.pfx</code> file:</p>
+<pre><code class="language-powershell">Import-PfxCertificate `
+         -FilePath C:\certificate.pfx `
+         -CertStoreLocation Cert:\LocalMachine\My `
+         -Password $mypwd.Password
+</code></pre>
+</li>
+<li>
+<p><strong>Tauri Configuration</strong></p>
+<p>To configure Tauri for code signing we need to enter a few things
+into our <code>tauri.conf.json</code> file:</p>
+<ul>
+<li>
+<p><code>certificateThumbprint</code> - The SHA-1 thumbprint of your
+certificate. Enter the following command and copy the values for
+<code>localKeyID</code> <strong>without spaces</strong>.</p>
+<pre><code class="language-powershell">openssl pkcs12 -info -in certificate.pfx
+</code></pre>
+<p>For this example output the <code>certificateThumbprint</code> is <br>
+<code>A1B1A2B2A3B3A4B4A5B5A6B6A7B7A8B8A9B9A0B0</code>.</p>
+<pre><code class="language-text">Bag Attributes
+    localKeyID: A1 B1 A2 B2 A3 B3 A4 B4 A5 B5 A6 B6 A7 B7 A8 B8 A9 B9 A0 B0
+</code></pre>
+</li>
+<li>
+<p><code>digestAlgorithm</code> - The SHA digest algorithm used for your
+certificate. This is likely <code>sha256</code>.</p>
+</li>
+<li>
+<p><code>timestampUrl</code> - A URL pointing to a timestamp server used to
+verify the time the certificate is signed. It's best to provide
+the timestamp server provided by your certificate authority here.</p>
+</li>
+<li>
+<p><code>tsp</code> - Enables the <em>Time-Stamp Protocol</em> (TSP, defined by <a href="https://datatracker.ietf.org/doc/html/rfc3161">RFC
+3161</a>) instead of NTP. Some certificate authorities, like
+<a href="https://www.ssl.com/">SSL.com</a> only provide TSP servers.</p>
+</li>
+</ul>
+<pre><code class="language-json">&quot;bundle&quot;: {
+    &quot;windows&quot;: {
+            &quot;certificateThumbprint&quot;: &quot;A1B1A2B2A3B3A4B4A5B5A6B6A7B7A8B8A9B9A0B0&quot;,
+            &quot;digestAlgorithm&quot;: &quot;sha256&quot;,
+            &quot;timestampUrl&quot;: &quot;http://timestamp.comodoca.com&quot;,
+            &quot;tsp&quot;: false
+    }
+}
+</code></pre>
+</li>
+<li>
+<p><strong>Sign your Application</strong></p>
+<p>Now you can run <code>tauri build</code> and you will see the following
+additional output:</p>
+<pre><code class="language-text">info: signing app
+info: running signtool &quot;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.19041.0\\x64\\signtool.exe&quot;
+info: Done Adding Additional Store
+Successfully signed: APPLICATION FILE PATH HERE
+</code></pre>
+<p>And that's it! You have successfully signed your Tauri application!</p>
+</li>
+</ol>
+<h2 id="continous-integration"><a class="header" href="#continous-integration">Continous Integration</a></h2>
+<p>As the above-described process is rather laborious, most developers
+run this step as an automated part of their Continous Integration
+(CI). For users of <a href="https://github.com/features/actions">GitHub Actions</a> Tauri provides the <a href="https://github.com/tauri-apps/tauri-action">Tauri Action</a>,
+which simplifies the setup.</p>
+<blockquote>
+<p>Note: The following example assumes you store the secret passwords
+and tokens using <a href="https://docs.github.com/en/actions/reference/encrypted-secrets">GitHub Secrets</a>.</p>
+</blockquote>
+<figure>
+<p>Filename: .github/workflows/publish.yml</p>
+<pre><code class="language-yaml">name: &quot;publish&quot;
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  publish-tauri:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [windows-latest]
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: install Rust stable
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: import windows certificate
+        env:
+          WINDOWS_CERTIFICATE: ${{ secrets.WINDOWS_CERTIFICATE }}
+          WINDOWS_CERTIFICATE_PASSWORD:
+            ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+        run: |
+          New-Item -ItemType directory -Path certificate
+          Set-Content -Path certificate/tempCert.txt -Value $env:WINDOWS_CERTIFICATE
+          certutil -decode certificate/tempCert.txt certificate/certificate.pfx
+          Remove-Item -path certificate -include tempCert.txt
+          Import-PfxCertificate `
+              -FilePath certificate/certificate.pfx `
+              -CertStoreLocation Cert:\LocalMachine\My `
+              -Password (ConvertTo-SecureString -String $env:WINDOWS_CERTIFICATE_PASSWORD -Force -AsPlainText)
+      - name: install app dependencies
+        run: yarn
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
+          releaseName: &quot;App v__VERSION__&quot;
+          releaseBody:
+            &quot;See the assets to download this version and install.&quot;
+          releaseDraft: true
+          prerelease: false
+</code></pre>
+<figcaption>Listing 4-TODO: A GitHub Action workflow that builds, signs and publishes a Tauri application.</figcaption>
+</figure>
+<h2 id="submit-apps-to-the-windows-store"><a class="header" href="#submit-apps-to-the-windows-store">Submit Apps to the Windows Store</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../building/reducing-the-app-size.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../distributing/macos.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../building/reducing-the-app-size.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../distributing/macos.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../theme/mermaid.min.js"></script>
+        <script type="text/javascript" src="../theme/mermaid-init.js"></script>
+        <script type="text/javascript" src="../theme/ferris.js"></script>
+    </body>
+</html>
